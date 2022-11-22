@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour {
     private bool _isLookingLeft;
 	private bool _isMoving;
 
-	[SerializeField] private UnityEvent _moveTargetSetEvent;
+    /*[SerializeField] private ClickedItem _clickedItem;
+    [SerializeField] private StringVariable _moveObjective;*/
+
+    [SerializeField] private UnityEvent _moveTargetSetEvent;
 	[SerializeField] private UnityEvent _moveTargetReachEvent;
 	[SerializeField] private UnityEvent _moveCancelEvent;
 	[SerializeField] private MoveTarget _moveTarget;
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour {
 			if (Physics.Raycast(ray, out RaycastHit hit)) {
                 if (hit.transform.gameObject.tag == "Walkable") {
                     _moveTarget.Destination = hit.point;
+                    //_moveObjective.Value = "ChangePosition";
                     _moveCancelEvent.Invoke();
                     _moveTargetSetEvent.Invoke();
                 }
@@ -83,5 +87,15 @@ public class PlayerController : MonoBehaviour {
 		}
 
 	}
+
+    // ------ Event Responses ------
+
+    /*
+    public void MoveCharacterToClickedItem() {
+        _moveTarget.Destination = _clickedItem.ItemGameObject.transform.position;
+        _moveObjective.Value = "ItemPickup";
+        _moveTargetSetEvent.Invoke();
+    }
+    */
 
 }

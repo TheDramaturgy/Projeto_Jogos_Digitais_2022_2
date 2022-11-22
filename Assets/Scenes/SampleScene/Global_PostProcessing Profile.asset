@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   threshold:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
@@ -123,10 +123,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.289
+    m_Value: 0.35
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.533
+    m_Value: 0.7
   rounded:
     m_OverrideState: 0
     m_Value: 0
