@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68ffb66731913e4eb1833f23bb45c1c, type: 3}
   m_Name: MoveObjective
   m_EditorClassIdentifier: 
-  _value: 
+  _value: ChangePosition

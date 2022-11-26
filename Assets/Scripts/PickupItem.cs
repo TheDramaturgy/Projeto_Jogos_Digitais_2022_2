@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PickupItem : MonoBehaviour {
 
-	[SerializeField] private ClickedItem _clickedItem;
+	[SerializeField] private GameObjectVariable _clickedItem;
 	[SerializeField] private UnityEvent _itemClickEvent;
 	[SerializeField] private uint _itemIdentifier;
 	[SerializeField] private string _itemCommentary;
@@ -18,7 +18,7 @@ public class PickupItem : MonoBehaviour {
 	}
 
 	public void OnMouseUp() {
-		_clickedItem.ItemGameObject = this.gameObject;
+		_clickedItem.Value = this.gameObject;
 		_itemClickEvent.Invoke();
 	}
 

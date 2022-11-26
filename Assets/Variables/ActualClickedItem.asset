@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f8af66b8bad0c468331b3f9036a5f1, type: 3}
   m_Name: ActualClickedItem
   m_EditorClassIdentifier: 
+  Description: "When an item is clicked, this object \nreferences it."
+  _gameObject: {fileID: 0}

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class InventoryController : MonoBehaviour {
 
 	[SerializeField] private InventorySet _inventorySet;
-	[SerializeField] private ClickedItem clickedItem;
+	[SerializeField] private GameObjectVariable clickedItem;
 
 	private readonly List<GameObject> _slots = new();
 
@@ -24,9 +24,9 @@ public class InventoryController : MonoBehaviour {
 
 	public void AddItem() {
 		if (_inventorySet.GetFreeSlot(out int idx)) {
-			var item = Instantiate(clickedItem.ItemGameObject.GetComponent<PickupItem>().ItemPrefab, _slots[idx].transform);
+			var item = Instantiate(clickedItem.Value.GetComponent<PickupItem>().ItemPrefab, _slots[idx].transform);
 			_inventorySet.AddItemToSlot(item.gameObject, idx);
-			Destroy(clickedItem.ItemGameObject);
+			Destroy(clickedItem.Value);
 			clickedItem.Clear();
 		}
 	}
