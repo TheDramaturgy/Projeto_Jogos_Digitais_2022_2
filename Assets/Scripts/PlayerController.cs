@@ -1,8 +1,8 @@
-using JetBrains.Annotations;
-using UnityEditor.Rendering;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using TMPro;
 
 public class PlayerController : MonoBehaviour {
     private Camera _camera;
@@ -11,9 +11,11 @@ public class PlayerController : MonoBehaviour {
     private Animator _animator;
     private bool _isLookingLeft;
 	private bool _isMoving;
+    [SerializeField] private TMP_Text _speakText;
 
-    /*[SerializeField] private ClickedItem _clickedItem;
-    [SerializeField] private StringVariable _moveObjective;*/
+    [SerializeField] private ClickedItem _clickedItem;
+    [SerializeField] private TextDictionary _itemComments;
+    //[SerializeField] private StringVariable _moveObjective;
 
     [SerializeField] private UnityEvent _moveTargetSetEvent;
 	[SerializeField] private UnityEvent _moveTargetReachEvent;
@@ -97,5 +99,19 @@ public class PlayerController : MonoBehaviour {
         _moveTargetSetEvent.Invoke();
     }
     */
+
+    public void CommentItemPickup() {
+        var pickupItem = _clickedItem.ItemGameObject.GetComponent<PickupItem>();
+        _speakText.text = _itemComments.textDict[pickupItem.GetItemId()];
+    }
+
+    public IEnumerator ClearCommentCoroutine() {
+        yield return new WaitForSeconds(3);
+        _speakText.text = "";
+    }
+
+    public void ClearComment() {
+        StartCoroutine(ClearCommentCoroutine());
+	}
 
 }
