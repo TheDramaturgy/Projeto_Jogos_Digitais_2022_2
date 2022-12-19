@@ -4,8 +4,10 @@ using UnityEngine.UI;
 
 public class PickupItem : MonoBehaviour {
 
-	[SerializeField] private GameObjectVariable _clickedItem;
 	[SerializeField] private UnityEvent _itemClickEvent;
+	[SerializeField] private UnityEvent _itemReachedEvent;
+
+	[SerializeField] private GameObjectVariable _clickedItem;
 	[SerializeField] private uint _itemIdentifier;
 	[SerializeField] private string _itemCommentary;
 	[SerializeField] private TextDictionary _itemComments;
@@ -22,6 +24,10 @@ public class PickupItem : MonoBehaviour {
 	public void OnMouseUp() {
 		_clickedItem.Value = this.gameObject;
 		_itemClickEvent.Invoke();
+	}
+
+	private void OnTriggerEnter(Collider other) {
+		_itemReachedEvent.Invoke();
 	}
 
 	// ------ Methods ------

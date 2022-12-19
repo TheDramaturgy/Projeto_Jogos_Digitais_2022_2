@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f3ba1fb30ceecc4e96636b8c63321a1, type: 3}
   m_Name: CompleteMinigames
   m_EditorClassIdentifier: 
-  Items:
-  - Sandwich
+  Items: []
