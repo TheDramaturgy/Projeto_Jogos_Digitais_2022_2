@@ -9,12 +9,14 @@ public class PickupItem : MonoBehaviour {
 	[SerializeField] private uint _itemIdentifier;
 	[SerializeField] private string _itemCommentary;
 	[SerializeField] private TextDictionary _itemComments;
+	[SerializeField] private uint _pickupQuantity;
 	public Image ItemPrefab;
 
 	// ------ Unity Handlers ------
 
 	public void Awake() {
 		_itemComments.textDict[_itemIdentifier] = _itemCommentary;
+		ItemPrefab.GetComponent<InventoryItem>().SetId(_itemIdentifier);
 	}
 
 	public void OnMouseUp() {
@@ -26,5 +28,9 @@ public class PickupItem : MonoBehaviour {
 
 	public uint GetItemId() {
 		return _itemIdentifier;
+	}
+
+	public uint GetPickupQuantity() {
+		return _pickupQuantity;
 	}
 }
