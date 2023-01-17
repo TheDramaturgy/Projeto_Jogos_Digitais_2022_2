@@ -3,13 +3,13 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using TMPro;
-using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour {
     private Camera _camera;
     private NavMeshAgent _agent;
     private Transform _transform;
     private Animator _animator;
+	private float _interactionRange;
     private bool _isLookingLeft;
 	private bool _isMoving;
     [SerializeField] private TMP_Text _speakText;
@@ -72,9 +72,12 @@ public class PlayerController : MonoBehaviour {
 		} else if (_agent.velocity.magnitude == 0 && _isMoving) {
 			_isMoving = false;
 			var target = new Vector3(_moveTarget.Value.x, 0.0f, _moveTarget.Value.z);
-			var reach = new Vector3(gameObject.transform.position.x, 0.0f, gameObject.transform.position.z);
-			if (target == reach) {
+			var reach = new Vector3(transform.position.x, 0.0f, transform.position.z);
+			if (Vector3.Distance(target, reach) <= _interactionRange) {
 				_moveTargetReachEvent.Invoke();
+				_moveTargetReachEvent.RemoveAllListeners();
+				_agent.isStopped = true;
+				_agent.ResetPath();
 			}
 		}
 	}
@@ -108,6 +111,14 @@ public class PlayerController : MonoBehaviour {
         _moveObjective.Value = "ItemPickup";
         _moveTargetSetEvent.Invoke();
     }
+
+	public void MoveCharacterToClickedItem(float range, UnityAction callback) {
+		_interactionRange = range;
+		_moveTargetReachEvent.AddListener(callback);
+		_moveObjective.Value = "ItemPickup";
+		_moveTarget.Value = _clickedItem.Value.transform.position;
+		_moveTargetSetEvent.Invoke();
+	}
 
 	public void PickupClickedItem() {
 		if (_moveObjective.Value == "ItemPickup") {

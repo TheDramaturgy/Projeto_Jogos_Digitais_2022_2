@@ -12,6 +12,13 @@ public class TableSandwich : MonoBehaviour {
 		SceneManager.sceneLoaded += onSceneLoad;
 	}
 
+	private void Start() {
+		if (_completeMinigames.Items.Contains("Sandwich")) {
+			transform.GetChild(0).gameObject.SetActive(_onSandwichMinigameComplete);
+			transform.GetChild(1).gameObject.SetActive(_onSandwichMinigameComplete);
+		}
+	}
+
 	void onSceneLoad(Scene scene, LoadSceneMode mode) {
 		if (_completeMinigames.Items.Contains("Sandwich")) {
 			transform.GetChild(0).gameObject.SetActive(_onSandwichMinigameComplete);
