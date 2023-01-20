@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using TMPro;
 
 public class PlayerController : MonoBehaviour {
     private Camera _camera;
@@ -12,7 +11,6 @@ public class PlayerController : MonoBehaviour {
 	private float _interactionRange;
     private bool _isLookingLeft;
 	private bool _isMoving;
-    [SerializeField] private TMP_Text _speakText;
 
     [SerializeField] private GameObjectVariable _clickedItem;
     [SerializeField] private TextDictionary _itemComments;
@@ -39,7 +37,12 @@ public class PlayerController : MonoBehaviour {
         _isMoving = false;
 	}
 
-    void Update() {
+	void Start() {
+		_moveTargetSetEvent.AddListener(HandleMovement);
+
+	}
+
+	void Update() {
         ListenMouseEvents();
 		UpdateMovementStatus();     
         HandleAnimation();
@@ -113,29 +116,21 @@ public class PlayerController : MonoBehaviour {
     }
 
 	public void MoveCharacterToClickedItem(float range, UnityAction callback) {
-		_interactionRange = range;
-		_moveTargetReachEvent.AddListener(callback);
-		_moveObjective.Value = "ItemPickup";
-		_moveTarget.Value = _clickedItem.Value.transform.position;
-		_moveTargetSetEvent.Invoke();
+		if (Vector3.Distance(_clickedItem.Value.transform.position, transform.position) > _interactionRange) {
+			_interactionRange = range;
+			_moveTargetReachEvent.AddListener(callback);
+			_moveObjective.Value = "ItemPickup";
+			_moveTarget.Value = _clickedItem.Value.transform.position;
+			_moveTargetSetEvent.Invoke();
+		} else {
+			callback.Invoke();
+		}
 	}
 
 	public void PickupClickedItem() {
 		if (_moveObjective.Value == "ItemPickup") {
 			_itemPickupEvent.Invoke();
 		}
-	}
-
-
-	public void CommentItemPickup(int duration) {
-        var pickupItem = _clickedItem.Value.GetComponent<PickupItem>();
-        _speakText.text = _itemComments.textDict[pickupItem.GetItemId()];
-		StartCoroutine(ClearDialog(duration));
-	}
-
-    private IEnumerator ClearDialog(int time) { 
-		yield return new WaitForSeconds(time);
-		_speakText.text = "";
 	}
 
 	#endregion Event Responses
