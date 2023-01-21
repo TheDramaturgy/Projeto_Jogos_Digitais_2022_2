@@ -23,11 +23,15 @@ public class InventorySet : ScriptableObject {
 	}
 
 	private List<Slot> _slots;
+	
+	private void FillSlots() {
+		_slots = new List<Slot>();
+		for (int i = 0; i < 6; ++i) _slots.Add(new Slot(false));
+	}
 
 	public bool GetFreeSlot(out int idx) {
 		if (_slots == null) {
-			_slots = new List<Slot>();
-			for (int i = 0; i < 6; ++i) _slots.Add(new Slot(false));
+			FillSlots();
 
 			idx = 0;
 			return true;
@@ -49,8 +53,7 @@ public class InventorySet : ScriptableObject {
 
 		// If slots not intantiated, intantiate.
 		if (_slots == null) {
-			_slots = new List<Slot>();
-			for (int i = 0; i < 6; ++i) _slots.Add(new Slot(false));
+			FillSlots();
 		}
 
 		// Find free slots.
@@ -65,6 +68,7 @@ public class InventorySet : ScriptableObject {
 	}
 
 	public void AddItemToSlot(GameObject item, int slot) {
+		if (_slots == null) { FillSlots(); }
 		_slots[slot] = new Slot(item);
 	}
 
@@ -92,14 +96,12 @@ public class InventorySet : ScriptableObject {
 	}
 
 	public bool isOccupied(int idx) {
+		if (_slots == null) { FillSlots(); }
 		return _slots[idx].IsOcupied;
 	}
 
 	public int GetSize() {
-		if (_slots == null) {
-			return 0;
-		} else {
-			return _slots.Count;
-		}
+		if (_slots == null) { FillSlots(); } 
+		return _slots.Count;
 	}
 }

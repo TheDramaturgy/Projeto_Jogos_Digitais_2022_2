@@ -6,6 +6,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
 	[SerializeField] private uint _id;
 	private Transform _actualParent;
+	private Transform _previousParent;
 	private Image _image;
 
 	// ------ Unity Handlers ------
@@ -25,16 +26,29 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	}
 
 	public void OnEndDrag(PointerEventData eventData) {
-		_image.raycastTarget = true;
+		UpdatePosition();
 	}
 
 	public void ChangeParent(Transform parent) {
+		_previousParent = _actualParent;
 		_actualParent = parent;
+	}
+
+	public void UpdatePosition() {
 		transform.SetParent(_actualParent);
 		transform.localPosition = Vector3.zero;
+		_image.raycastTarget = true;
 	}
+
 	public Transform GetCurrentParent() {
 		return _actualParent;
+	}
+
+	public Transform GetPreviousParent() {
+		if (_previousParent == null) {
+			Debug.LogError("No previous parent");
+		}
+		return _previousParent;
 	}
 
 	public void SetId(uint value) {

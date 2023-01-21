@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 	private bool _isMoving;
 
     [SerializeField] private GameObjectVariable _clickedItem;
-    [SerializeField] private TextDictionary _itemComments;
+    [SerializeField] private Commentary _itemComments;
     [SerializeField] private StringVariable _moveObjective;
 	[SerializeField] private UnityEvent _itemPickupEvent;
 

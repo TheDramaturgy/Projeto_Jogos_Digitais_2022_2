@@ -13,7 +13,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
 	}
 
 	public void OnDrop(PointerEventData eventData) {
-		var movedItem = eventData.pointerDrag.GetComponent<InventoryItem>();
 		_inventoryController.ChangeItemSlot(eventData.pointerDrag, _slotIndex);
 	}
 
