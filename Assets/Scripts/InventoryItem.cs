@@ -1,3 +1,5 @@
+using Unity.Burst.CompilerServices;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -27,6 +29,17 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
 	public void OnEndDrag(PointerEventData eventData) {
 		UpdatePosition();
+		CheckDropLocation();
+		_image.raycastTarget = true;
+	}
+
+	private void CheckDropLocation() {
+		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+		Debug.Log(hit.transform.gameObject.name);
+		var itemIteractable = hit.transform.GetComponent<ItemInteractable>();
+		if (itemIteractable != null) {
+			itemIteractable.OnDrop(this.gameObject);
+		}
 	}
 
 	public void ChangeParent(Transform parent) {
@@ -37,7 +50,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	public void UpdatePosition() {
 		transform.SetParent(_actualParent);
 		transform.localPosition = Vector3.zero;
-		_image.raycastTarget = true;
 	}
 
 	public Transform GetCurrentParent() {

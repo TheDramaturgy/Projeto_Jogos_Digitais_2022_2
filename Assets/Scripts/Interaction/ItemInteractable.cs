@@ -1,10 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.TextCore.Text;
 
-public class ItemInteractable : MonoBehaviour, IDropHandler {
+public class ItemInteractable : MonoBehaviour {
 
 	[SerializeField] private UnityEvent _onRightItemDropEvent;
 	[SerializeField] private UnityEvent _onWrongItemDropEvent;
@@ -14,8 +12,9 @@ public class ItemInteractable : MonoBehaviour, IDropHandler {
 	[SerializeField] private int _expectedItemId = -1;
 	private GameObject _dropedItem;
 	
-	public void OnDrop(PointerEventData eventData) {
-		_dropedItem = eventData.pointerDrag;
+	public void OnDrop(GameObject dropedItem) {
+		Debug.Log("ITEM DROPPED!!!");
+		_dropedItem = dropedItem;
 		_clickedGameObject.Value = this.gameObject;
 		_character.MoveCharacterToClickedItem(_interactionRange, OnInteractableReach);
 	}
