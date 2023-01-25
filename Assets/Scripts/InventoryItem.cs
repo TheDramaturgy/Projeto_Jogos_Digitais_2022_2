@@ -29,17 +29,21 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
 	public void OnEndDrag(PointerEventData eventData) {
 		UpdatePosition();
-		CheckDropLocation();
+		CheckDropInteraction();
 		_image.raycastTarget = true;
 	}
 
-	private void CheckDropLocation() {
-		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-		Debug.Log(hit.transform.gameObject.name);
-		var itemIteractable = hit.transform.GetComponent<ItemInteractable>();
-		if (itemIteractable != null) {
-			itemIteractable.OnDrop(this.gameObject);
+	private void CheckDropInteraction() {
+		var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		var hit = Physics2D.GetRayIntersection(ray);
+
+		if (hit.collider != null) {
+			var itemIteractable = hit.transform.GetComponent<ItemInteractable>();
+			if (itemIteractable != null) {
+				itemIteractable.OnDrop(this.gameObject);
+			}
 		}
+		
 	}
 
 	public void ChangeParent(Transform parent) {

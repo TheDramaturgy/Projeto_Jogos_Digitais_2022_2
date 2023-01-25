@@ -16,9 +16,16 @@ public class Commenter : MonoBehaviour {
 	}
 
 	private IEnumerator CharacterComment(Commentary commentary) {
-		for (int i = 0; i < commentary.GetCommentariesCount(); i++) {
-			_speakText.text = commentary.GetCommentary(i);
-			yield return new WaitForSeconds(commentary.GetDuration(i));
+		if (commentary.IsContinuous()) {
+			for (int i = 0; i < commentary.GetCommentariesCount(); i++) {
+				Commentary.Dialog dialog = commentary.GetDialog(i);
+				_speakText.text = dialog.text;
+				yield return new WaitForSeconds(dialog.duration);
+			}
+		} else {
+			Commentary.Dialog dialog = commentary.GetNextDialog();
+			_speakText.text = dialog.text;
+			yield return new WaitForSeconds(dialog.duration);
 		}
 		_speakText.text = "";
 	}
