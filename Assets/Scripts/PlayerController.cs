@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
     private bool _isLookingLeft;
 	private bool _isMoving;
 
+	[SerializeField] private bool _isControloble;
+
     [SerializeField] private GameObjectVariable _clickedItem;
     [SerializeField] private Commentary _itemComments;
     [SerializeField] private StringVariable _moveObjective;
@@ -40,12 +42,11 @@ public class PlayerController : MonoBehaviour {
 
 	void Start() {
 		_moveTargetSetEvent.AddListener(HandleMovement);
-
 	}
 
 	void Update() {
-        ListenMouseEvents();
-		UpdateMovementStatus();     
+		ListenMouseEvents();
+		UpdateMovementStatus();
         HandleAnimation();
 
 		// Maintain sprite turned to camera
@@ -87,7 +88,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void HandleMovement() {
-        _agent.destination = _moveTarget.Value;
+		if (_isControloble) {
+			_agent.destination = _moveTarget.Value;
+		}
     }
 
     private void HandleAnimation() {
@@ -132,6 +135,23 @@ public class PlayerController : MonoBehaviour {
 		if (_moveObjective.Value == "ItemPickup") {
 			_itemPickupEvent.Invoke();
 		}
+	}
+	public void SetControlable(bool state) {
+		if (state == true) {
+			StartCoroutine(EnableControl());
+		} else {
+			StartCoroutine(DisableControl());
+		}
+	}
+
+	private IEnumerator EnableControl() {
+		yield return new WaitForSeconds(0.6f);
+		_isControloble = true;
+	}
+
+	private IEnumerator DisableControl() {
+		yield return new WaitForSeconds(0.6f);
+		_isControloble = false;
 	}
 
 	#endregion Event Responses
