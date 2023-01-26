@@ -8,11 +8,19 @@ public class Commenter : MonoBehaviour {
 
 	public void Comment(Commentary commentary) {
 		if (_lastCommentCoroutine != null) {
+			_speakText.text = "";
 			StopCoroutine(_lastCommentCoroutine);
 		}
 		
 		_lastCommentCoroutine = CharacterComment(commentary);
 		StartCoroutine(_lastCommentCoroutine);
+	}
+
+	public void StopComment() {
+		if (_lastCommentCoroutine != null) {
+			_speakText.text = "";
+			StopCoroutine(_lastCommentCoroutine);
+		}
 	}
 
 	private IEnumerator CharacterComment(Commentary commentary) {

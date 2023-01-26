@@ -14,10 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CustomBlends:
   - m_From: CM vcam - Follow Window
-    m_To: CM vcam - Follow Character
+    m_To: CM vcam - Follow Bed
     m_Blend:
       m_Style: 1
       m_Time: 10
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: CM vcam - Follow Bed
+    m_To: CM vcam - Follow Character
+    m_Blend:
+      m_Style: 1
+      m_Time: 5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

@@ -1,34 +1,25 @@
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class Interactable : MonoBehaviour {
 
 	[SerializeField] private UnityEvent _onInteractionEvent;
+	[SerializeField] private bool _needCharacter = true;
 	[SerializeField] private GameObjectVariable _clickedGameObject;
 	[SerializeField] private PlayerController _character;
 	[SerializeField] private float _interactionRange = 1.0f;
-	private Renderer _renderer;
+	[SerializeField] private float _xOffset = 0.0f;
 
 	// ------ Unity Handlers ------
 
-	private void Start () {
-		_renderer = gameObject.GetComponent<Renderer>();
-	}
-
 	private void OnMouseUp() {
-		_clickedGameObject.Value = this.gameObject;
-		_character.MoveCharacterToClickedItem(_interactionRange, OnInteractableReach);
-	}
-
-	private void OnMouseEnter() {
-		if (GetComponent<Renderer>() != null) {
-			GetComponent<Renderer>().material.SetColor("_Color", new Vector4(1.988f, 0.438f, 0.438f, 1.0f));
-		}
-	}
-
-	private void OnMouseExit() {
-		if (GetComponent<Renderer>() != null) {
-			GetComponent<Renderer>().material.SetColor("_Color", new Vector4(2.2f, 2.2f, 0.0f, 1.0f));
+		if (_needCharacter) {
+			_clickedGameObject.Value = this.gameObject;
+			_character.MoveCharacterToClickedItem(_interactionRange, _xOffset, OnInteractableReach);
+		} else {
+			OnInteractableReach();
 		}
 	}
 

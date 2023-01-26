@@ -3,6 +3,7 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour {
     private Camera _camera;
@@ -119,12 +120,28 @@ public class PlayerController : MonoBehaviour {
         _moveTargetSetEvent.Invoke();
     }
 
-	public void MoveCharacterToClickedItem(float range, UnityAction callback) {
-		if (Vector3.Distance(_clickedItem.Value.transform.position, transform.position) > _interactionRange) {
+	public void MoveCharacterToClickedItem(float range, float xOffset, UnityAction callback) {
+		var targetPosRight = new Vector3(_clickedItem.Value.transform.position.x + xOffset, transform.position.y, _clickedItem.Value.transform.position.z);
+		var targetPosLeft = new Vector3(_clickedItem.Value.transform.position.x - xOffset, transform.position.y, _clickedItem.Value.transform.position.z);
+		var characterPos = transform.position;
+		
+		Vector3 targetPos;
+		if (Vector3.Distance(targetPosRight, characterPos) < Vector3.Distance(targetPosLeft, characterPos)) {
+			targetPos = targetPosRight;
+		} else {
+			targetPos = targetPosLeft;
+		}
+
+		Debug.Log("Target: " + targetPos);
+		Debug.Log("Charcter: " + characterPos);
+		Debug.Log("Distance: " + Vector3.Distance(targetPos, characterPos));
+
+		
+		if (Vector3.Distance(targetPos, characterPos) > range) {
 			_interactionRange = range;
 			_moveTargetReachEvent.AddListener(callback);
 			_moveObjective.Value = "ItemPickup";
-			_moveTarget.Value = _clickedItem.Value.transform.position;
+			_moveTarget.Value = targetPos;
 			_moveTargetSetEvent.Invoke();
 		} else {
 			callback.Invoke();
