@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 public class ItemInteractable : MonoBehaviour {
 
@@ -9,7 +9,7 @@ public class ItemInteractable : MonoBehaviour {
 	[SerializeField] private bool _needCharacter = true;
 	[SerializeField] private GameObjectVariable _clickedGameObject;
 	[SerializeField] private PlayerController _character;
-	[SerializeField] private int _expectedItemId = -1;
+	[SerializeField] private List<int> _expectedItemId = new();
 	[SerializeField] private float _interactionRange = 1.0f;
 	[SerializeField] private float _xOffset = 0.0f;
 	private GameObject _dropedItem;
@@ -27,9 +27,14 @@ public class ItemInteractable : MonoBehaviour {
 
 	public void OnInteractableReach() {
 		var dropedInventoryItem = _dropedItem.GetComponent<InventoryItem>();
-		if (dropedInventoryItem.GetId() == _expectedItemId) {
-			Destroy(_dropedItem);
-			_onRightItemDropEvent.Invoke(); 
-		} else { _onWrongItemDropEvent.Invoke(); }
+
+		for (int i = 0; i < _expectedItemId.Count; i++) {
+			if (dropedInventoryItem.GetId() == _expectedItemId[i]) {
+				Destroy(_dropedItem);
+				_onRightItemDropEvent.Invoke();
+				return;
+			}
+		} 
+		_onWrongItemDropEvent.Invoke();
 	}
 }

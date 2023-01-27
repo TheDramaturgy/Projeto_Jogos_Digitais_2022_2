@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
@@ -15,6 +14,7 @@ public class Interactable : MonoBehaviour {
 	// ------ Unity Handlers ------
 
 	private void OnMouseUp() {
+		Debug.Log("Interacted with -> " + this.name);
 		if (_needCharacter) {
 			_clickedGameObject.Value = this.gameObject;
 			_character.MoveCharacterToClickedItem(_interactionRange, _xOffset, OnInteractableReach);
