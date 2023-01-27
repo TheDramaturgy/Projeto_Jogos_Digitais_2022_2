@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eabf885fec16c449e43af057a49e5f, type: 3}
-  m_Name: Hidind
+  m_Name: mirror_full
   m_EditorClassIdentifier: 
   Commentaries:
-  - "Aposto que ningu\xE9m vai me encontrar agora."
-  - HeHeHe.
+  - CONTEMPLE-ME!
   Durations:
   - 3
-  - 1.5
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0
