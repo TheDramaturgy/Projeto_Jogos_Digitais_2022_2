@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eabf885fec16c449e43af057a49e5f, type: 3}
-  m_Name: Torch_poster_Commentary 2
+  m_Name: Torch_poster_Commentary 3
   m_EditorClassIdentifier: 
   Commentaries:
-  - mas isso deixaria o escopo do jogo muito grande
+  - "Pena que n\xE3o d\xE1 pra refletir com esse espelho todo quebrado."
   Durations:
-  - 3
+  - 5
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

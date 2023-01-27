@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -12,9 +13,9 @@ public class PlayerController : MonoBehaviour {
     private Animator _animator;
 	private float _interactionRange;
     private bool _isLookingLeft;
-	private bool _isMoving;
 
 	[SerializeField] private bool _isControloble;
+	[SerializeField] private bool _canInteract;
 
     [SerializeField] private GameObjectVariable _clickedItem;
     [SerializeField] private Commentary _itemComments;
@@ -23,7 +24,6 @@ public class PlayerController : MonoBehaviour {
 
 	[SerializeField] private UnityEvent _moveTargetSetEvent;
 	[SerializeField] private UnityEvent _moveTargetReachEvent;
-	[SerializeField] private UnityEvent _moveCancelEvent;
 	[SerializeField] private Vector3Variable _moveTarget;
 
 	// ------ Unity Handlers ------
@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour {
         _animator = GetComponent<Animator>();
 
         _isLookingLeft = false;
-        _isMoving = false;
 	}
 
 	void Start() {
@@ -62,9 +61,9 @@ public class PlayerController : MonoBehaviour {
 			var ray = _camera.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out RaycastHit hit)) {
 				if (hit.transform.gameObject.tag == "Walkable") {
+					_moveTargetReachEvent.RemoveAllListeners();
 					_moveTarget.Value = hit.point;
 					_moveObjective.Value = "ChangePosition";
-					_moveCancelEvent.Invoke();
 					_moveTargetSetEvent.Invoke();
 				}
 			}
@@ -72,19 +71,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
     private void UpdateMovementStatus() {
-		// Check if character is moving
-		if (_agent.velocity.magnitude != 0 && !_isMoving) {
-			_isMoving = true;
-		} else if (_agent.velocity.magnitude == 0 && _isMoving) {
-			_isMoving = false;
-			var target = new Vector3(_moveTarget.Value.x, 0.0f, _moveTarget.Value.z);
-			var reach = new Vector3(transform.position.x, 0.0f, transform.position.z);
-			if (Vector3.Distance(target, reach) <= _interactionRange) {
-				_moveTargetReachEvent.Invoke();
-				_moveTargetReachEvent.RemoveAllListeners();
-				_agent.isStopped = true;
-				_agent.ResetPath();
-			}
+		var target = new Vector3(_moveTarget.Value.x, transform.position.y, _moveTarget.Value.z);
+		if (Vector3.Distance(target, transform.position) <= _interactionRange) {
+			_moveTargetReachEvent.Invoke();
+			_moveTargetReachEvent.RemoveAllListeners();
+			_agent.isStopped = true;
+			_agent.ResetPath();
 		}
 	}
 
@@ -121,6 +113,10 @@ public class PlayerController : MonoBehaviour {
     }
 
 	public void MoveCharacterToClickedItem(float range, float xOffset, UnityAction callback) {
+		if (!_canInteract) {
+			return;
+		}
+
 		var targetPosRight = new Vector3(_clickedItem.Value.transform.position.x + xOffset, transform.position.y, _clickedItem.Value.transform.position.z);
 		var targetPosLeft = new Vector3(_clickedItem.Value.transform.position.x - xOffset, transform.position.y, _clickedItem.Value.transform.position.z);
 		var characterPos = transform.position;
@@ -132,11 +128,7 @@ public class PlayerController : MonoBehaviour {
 			targetPos = targetPosLeft;
 		}
 
-		Debug.Log("Target: " + targetPos);
-		Debug.Log("Charcter: " + characterPos);
-		Debug.Log("Distance: " + Vector3.Distance(targetPos, characterPos));
-
-		
+		Debug.Log("Moving Character to -> " + _clickedItem.Value.name);
 		if (Vector3.Distance(targetPos, characterPos) > range) {
 			_interactionRange = range;
 			_moveTargetReachEvent.AddListener(callback);
@@ -161,14 +153,32 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	public void SetInteractionCapacity(bool state) {
+		if (state == true) {
+			StartCoroutine(EnableInteraction());
+		} else {
+			StartCoroutine(DisableInteraction());
+		}
+	}
+
 	private IEnumerator EnableControl() {
-		yield return new WaitForSeconds(0.6f);
+		yield return new WaitForSeconds(0.1f);
 		_isControloble = true;
 	}
 
 	private IEnumerator DisableControl() {
-		yield return new WaitForSeconds(0.6f);
+		yield return new WaitForSeconds(0.1f);
 		_isControloble = false;
+	}
+
+	private IEnumerator EnableInteraction() {
+		yield return new WaitForSeconds(0.1f);
+		_canInteract = true;
+	}
+
+	private IEnumerator DisableInteraction() {
+		yield return new WaitForSeconds(0.1f);
+		_canInteract = false;
 	}
 
 	#endregion Event Responses

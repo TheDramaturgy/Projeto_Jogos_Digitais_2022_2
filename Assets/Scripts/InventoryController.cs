@@ -44,6 +44,7 @@ public class InventoryController : MonoBehaviour {
 		if (_inventorySet.GetFreeSlot(clickedPickup.GetPickupQuantity(), out List<int> idx)) {
 			for (int i = 0; i < idx.Count; ++i) {
 				var item = Instantiate(clickedPickup.ItemPrefab, _slots[idx[i]].transform);
+				item.GetComponent<InventoryItem>().SetId(clickedPickup.GetItemId());
 				_inventorySet.AddItemToSlot(item.gameObject, idx[i]);
 			}
 

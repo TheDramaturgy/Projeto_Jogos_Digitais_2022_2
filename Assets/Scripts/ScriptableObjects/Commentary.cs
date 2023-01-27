@@ -26,7 +26,7 @@ public class Commentary : ScriptableObject {
 	}
 
 	public int GetCommentariesCount() {
-		return Commentaries.Count;
+		return _isContinuous ? Commentaries.Count : 1;
 	}
 
 	public Dialog GetDialog(int index) {

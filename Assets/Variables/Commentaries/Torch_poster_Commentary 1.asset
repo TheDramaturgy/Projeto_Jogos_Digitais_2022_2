@@ -14,12 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Commentaries:
   - "Eu adoraria tocar as m\xFAsicas da DETONATION OF SOULS na guitarra"
-  - mas isso deixaria o escopo do jogo muito grande
-  - "Pena que n\xE3o d\xE1 pra refletir com esse espelho todo quebrado."
   Durations:
   - 3
-  - 2
-  - 5
-  _isContinuous: 0
-  _isCyclic: 1
+  _isContinuous: 1
+  _isCyclic: 0
   _actualComment: 0
