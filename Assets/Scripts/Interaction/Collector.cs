@@ -11,6 +11,16 @@ public class Collector : MonoBehaviour {
 		CheckCollectionCompletion();
 	}
 
+	public void CollectAnyItem() {
+		for (int i = 0; i < _collectionItems.Count; i++) {
+			if (!_collectionItems[i]) {
+				_collectionItems[i] = true;
+				CheckCollectionCompletion();
+				return;
+			}
+		}
+	}
+
 	private void CheckCollectionCompletion() {
 		for (int i = 0; i < _collectionItems.Count; i++) {
 			if (!_collectionItems[i]) { return; }
