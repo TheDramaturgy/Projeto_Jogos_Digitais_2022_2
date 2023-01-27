@@ -11,17 +11,20 @@ public class Interactable : MonoBehaviour {
 	[SerializeField] private PlayerController _character;
 	[SerializeField] private float _interactionRange = 1.0f;
 	[SerializeField] private float _xOffset = 0.0f;
+	[SerializeField] private bool _isMouseOveUI = false;
 
 	// ------ Unity Handlers ------
 
+	private void Update() {
+		_isMouseOveUI = EventSystem.current.IsPointerOverGameObject();
+	}
+
 	private void OnMouseUp() {
-		if (EventSystem.current.IsPointerOverGameObject())
+		if (_isMouseOveUI)
         {
 			Debug.Log("Teste Log");
 			return;
-		}
-				
-				
+		}	
 				
 
 		Debug.Log("Interacted with -> " + this.name);

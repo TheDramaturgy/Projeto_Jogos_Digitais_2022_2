@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour {
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour {
 
     private void ListenMouseEvents() {
 		// Check if left mouse button has been clicked
-		if (Input.GetMouseButtonUp(0)) {
+		if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject()) {
 			var ray = _camera.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out RaycastHit hit)) {
 				if (hit.transform.gameObject.tag == "Walkable") {
