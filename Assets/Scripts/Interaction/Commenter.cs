@@ -58,6 +58,7 @@ public class Commenter : MonoBehaviour {
 
 	private void EndComment() {
 		_isCommenting = false;
+		Debug.Log("Ending Comment");
 		if (_character != null) {
 			_character.SetControlable(true);
 			_character.SetInteractionCapacity(true);
@@ -65,6 +66,7 @@ public class Commenter : MonoBehaviour {
 	}
 
 	private IEnumerator CharacterComment(string text, float duration) {
+		Debug.Log("commenting: " + text);
 		_speakText.text = text;
 		yield return new WaitForSeconds(duration);
 		_speakText.text = "";

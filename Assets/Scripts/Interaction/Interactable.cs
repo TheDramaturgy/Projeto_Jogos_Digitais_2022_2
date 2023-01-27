@@ -12,6 +12,7 @@ public class Interactable : MonoBehaviour {
 	[SerializeField] private float _interactionRange = 1.0f;
 	[SerializeField] private float _xOffset = 0.0f;
 	[SerializeField] private bool _isMouseOveUI = false;
+	private bool _shouldStartInteraction = false;
 
 	// ------ Unity Handlers ------
 
@@ -19,13 +20,21 @@ public class Interactable : MonoBehaviour {
 		_isMouseOveUI = EventSystem.current.IsPointerOverGameObject();
 	}
 
+	private void OnMouseDown() {
+		if (!_isMouseOveUI) _shouldStartInteraction = true;
+	}
+
 	private void OnMouseUp() {
 		if (_isMouseOveUI)
         {
-			Debug.Log("Teste Log");
+			Debug.Log("Mouse is over UI");
 			return;
 		}	
-				
+			
+		if (!_shouldStartInteraction) {
+			Debug.Log("Should Not Start Interaction");
+			return;
+		}
 
 		Debug.Log("Interacted with -> " + this.name);
 		if (_needCharacter) {
