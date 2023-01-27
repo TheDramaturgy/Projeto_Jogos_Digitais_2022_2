@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 
 public class Interactable : MonoBehaviour {
@@ -14,6 +15,8 @@ public class Interactable : MonoBehaviour {
 	// ------ Unity Handlers ------
 
 	private void OnMouseUp() {
+		if (EventSystem.current.IsPointerOverGameObject()) return;
+
 		Debug.Log("Interacted with -> " + this.name);
 		if (_needCharacter) {
 			_clickedGameObject.Value = this.gameObject;
