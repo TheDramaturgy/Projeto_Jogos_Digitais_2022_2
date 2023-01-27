@@ -15,7 +15,14 @@ public class Interactable : MonoBehaviour {
 	// ------ Unity Handlers ------
 
 	private void OnMouseUp() {
-		if (EventSystem.current.IsPointerOverGameObject()) return;
+		if (EventSystem.current.IsPointerOverGameObject())
+        {
+			Debug.Log("Teste Log");
+			return;
+		}
+				
+				
+				
 
 		Debug.Log("Interacted with -> " + this.name);
 		if (_needCharacter) {
