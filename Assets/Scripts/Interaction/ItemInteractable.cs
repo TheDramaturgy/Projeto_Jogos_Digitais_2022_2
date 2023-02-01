@@ -15,13 +15,15 @@ public class ItemInteractable : MonoBehaviour {
 	private GameObject _dropedItem;
 	
 	public void OnDrop(GameObject dropedItem) {
-		_dropedItem = dropedItem;
-		Debug.Log("Item droped on -> " + this.name);
-		if (_needCharacter) {
-			_clickedGameObject.Value = this.gameObject;
-			_character.MoveCharacterToClickedItem(_interactionRange, _xOffset, OnInteractableReach);
-		} else {
-			OnInteractableReach();
+		if (GameController.Instance.CanInteract()) {
+			_dropedItem = dropedItem;
+
+			if (_needCharacter) {
+				_clickedGameObject.Value = this.gameObject;
+				_character.MoveCharacterToClickedItem(_interactionRange, _xOffset, OnInteractableReach);
+			} else {
+				OnInteractableReach();
+			}
 		}
 	}
 

@@ -15,11 +15,9 @@ public class PlayerController : MonoBehaviour {
 	private float _interactionRange;
     private bool _isLookingLeft;
 
-	[SerializeField] private bool _isControloble;
-	[SerializeField] private bool _canInteract;
+	[SerializeField] private bool _canMove = false;
 
     [SerializeField] private GameObjectVariable _clickedItem;
-    [SerializeField] private Commentary _itemComments;
     [SerializeField] private StringVariable _moveObjective;
 	[SerializeField] private UnityEvent _itemPickupEvent;
 
@@ -58,7 +56,7 @@ public class PlayerController : MonoBehaviour {
 
     private void ListenMouseEvents() {
 		// Check if left mouse button has been clicked
-		if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject()) {
+		if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject() && _canMove) {
 			var ray = _camera.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out RaycastHit hit)) {
 				if (hit.transform.gameObject.tag == "Walkable") {
@@ -82,9 +80,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void HandleMovement() {
-		if (_isControloble) {
-			_agent.destination = _moveTarget.Value;
-		}
+		_agent.destination = _moveTarget.Value;
     }
 
     private void HandleAnimation() {
@@ -107,16 +103,8 @@ public class PlayerController : MonoBehaviour {
 	// ------ Event Responses ------
 	#region Event Responses
 
-	public void MoveCharacterToClickedItem() {
-        _moveTarget.Value = _clickedItem.Value.transform.position;
-        _moveObjective.Value = "ItemPickup";
-        _moveTargetSetEvent.Invoke();
-    }
-
-	public void MoveCharacterToClickedItem(float range, float xOffset, UnityAction callback) {
-		if (!_canInteract) {
-			return;
-		}
+	public void MoveCharacterToClickedItem(float range, float xOffset, UnityAction callback, bool isException = false) {
+		if (!_canMove && !isException) { return; }
 
 		var targetPosRight = new Vector3(_clickedItem.Value.transform.position.x + xOffset, transform.position.y, _clickedItem.Value.transform.position.z);
 		var targetPosLeft = new Vector3(_clickedItem.Value.transform.position.x - xOffset, transform.position.y, _clickedItem.Value.transform.position.z);
@@ -129,7 +117,6 @@ public class PlayerController : MonoBehaviour {
 			targetPos = targetPosLeft;
 		}
 
-		Debug.Log("Moving Character to -> " + _clickedItem.Value.name);
 		if (Vector3.Distance(targetPos, characterPos) > range) {
 			_interactionRange = range;
 			_moveTargetReachEvent.AddListener(callback);
@@ -141,46 +128,11 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	public void PickupClickedItem() {
-		if (_moveObjective.Value == "ItemPickup") {
-			_itemPickupEvent.Invoke();
-		}
-	}
 	public void SetControlable(bool state) {
-		if (state == true) {
-			StartCoroutine(EnableControl());
-		} else {
-			StartCoroutine(DisableControl());
-		}
+		_canMove = state;
 	}
 
-	public void SetInteractionCapacity(bool state) {
-		if (state == true) {
-			StartCoroutine(EnableInteraction());
-		} else {
-			StartCoroutine(DisableInteraction());
-		}
-	}
-
-	private IEnumerator EnableControl() {
-		yield return new WaitForSeconds(0.1f);
-		_isControloble = true;
-	}
-
-	private IEnumerator DisableControl() {
-		yield return new WaitForSeconds(0.1f);
-		_isControloble = false;
-	}
-
-	private IEnumerator EnableInteraction() {
-		yield return new WaitForSeconds(0.1f);
-		_canInteract = true;
-	}
-
-	private IEnumerator DisableInteraction() {
-		yield return new WaitForSeconds(0.1f);
-		_canInteract = false;
-	}
+	public bool CanMove() { return _canMove; }
 
 	#endregion Event Responses
 

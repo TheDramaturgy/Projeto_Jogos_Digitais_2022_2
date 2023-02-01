@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using static Commentary;
 
 public class Commenter : MonoBehaviour {
 	[SerializeField] private TMP_Text _speakText;
@@ -9,67 +8,104 @@ public class Commenter : MonoBehaviour {
 
 	private IEnumerator _lastCommentCoroutine;
 	private Commentary _currentCommentary;
+	private Commentary.Dialog _currentDialog;
 	private int _nextCommentIndex = 0;
+	private float _writingSpeed = 0.075f;
 	private bool _isCommenting = false;
+	private bool _isWriting = false;
+	private bool _isWaiting = false;
+	private bool _previousMovingState;
 
 	private void Update() {
 		if (_isCommenting) {
-			if (Input.anyKey) {
-			
-				NextComment();
-			}
+			if (Input.anyKeyDown) { NextAction(); }
 		}
 	}
 
 	public void Comment(Commentary commentary) {
-		_isCommenting = true;
-		if (_character != null) {
-			_character.SetControlable(false);
-			_character.SetInteractionCapacity(false);
+		if (_isCommenting) {
+			StopCoroutine(_lastCommentCoroutine);
+			ClearDialog();
+			EndComment();
 		}
 
-		ClearComment();
+		_isCommenting = true;
+		GameController.Instance.DisableInteraction();
+		if (_character != null) {
+			_previousMovingState = _character.CanMove();
+			_character.SetControlable(false);
+		}
+
 		_nextCommentIndex = 0;
 		_currentCommentary = commentary;
-		NextComment();
+		NextDialog();
+		Debug.Log("Next Dialog Called");
 	}
 
-	private void NextComment() {
-		ClearComment();
-
+	private void NextDialog() {
 		if (_nextCommentIndex >= _currentCommentary.GetCommentariesCount()) {
 			EndComment();
 			return;
 		}
 
-		var dialog = _currentCommentary.IsContinuous() ? _currentCommentary.GetDialog(_nextCommentIndex) : _currentCommentary.GetNextDialog();
+		_currentDialog = _currentCommentary.IsContinuous() ? _currentCommentary.GetDialog(_nextCommentIndex) : _currentCommentary.GetNextDialog();
 		_nextCommentIndex++;
 
-		_lastCommentCoroutine = CharacterComment(dialog.text, dialog.duration);
+		_lastCommentCoroutine = WriteDialogOverTime();
+		Debug.Log("Starting WriteOverTime!");
 		StartCoroutine(_lastCommentCoroutine);
 	}
 
-	public void ClearComment() {
-		if (_lastCommentCoroutine != null) {
-			_speakText.text = "";
-			StopCoroutine(_lastCommentCoroutine);
-		}
+	public void ClearDialog() {
+		_speakText.text = "";
 	}
 
 	private void EndComment() {
+		GameController.Instance.EnableInteraction();
+		if (_character != null) _character.SetControlable(_previousMovingState);
 		_isCommenting = false;
-		Debug.Log("Ending Comment");
-		if (_character != null) {
-			_character.SetControlable(true);
-			_character.SetInteractionCapacity(true);
-		}
 	}
 
-	private IEnumerator CharacterComment(string text, float duration) {
-		Debug.Log("commenting: " + text);
-		_speakText.text = text;
-		yield return new WaitForSeconds(duration);
-		_speakText.text = "";
-		NextComment();
+	private IEnumerator WriteDialogOverTime() {
+		_isWriting = true;
+
+		var position = 0;
+		while (position < _currentDialog.text.Length) {
+			do {
+				_speakText.text += _currentDialog.text[position++];
+				if (position >= _currentDialog.text.Length) break;
+			} while (_currentDialog.text[position] == ' ');
+			yield return new WaitForSeconds(_writingSpeed);
+		}
+
+		_isWriting = false;
+
+		_lastCommentCoroutine = ClearDialogAfterTime();
+		StartCoroutine(_lastCommentCoroutine);
+	}
+
+	private IEnumerator ClearDialogAfterTime() {
+		_isWaiting = true;
+
+		_speakText.text = _currentDialog.text;
+		yield return new WaitForSeconds(_currentDialog.duration);
+		ClearDialog();
+
+		_isWaiting = false;
+		NextDialog();
+	}
+
+	private void NextAction() {
+		if (_isWriting) {
+			StopCoroutine(_lastCommentCoroutine);
+			_isWriting = false;
+			_lastCommentCoroutine = ClearDialogAfterTime();
+			StartCoroutine(_lastCommentCoroutine);
+		} else if (_isWaiting) {
+			StopCoroutine(_lastCommentCoroutine);
+			_isWaiting = false;
+			ClearDialog();
+			NextDialog();
+		}
 	}
 }

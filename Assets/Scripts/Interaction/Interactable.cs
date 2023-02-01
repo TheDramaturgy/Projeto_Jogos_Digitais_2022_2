@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
 
 public class Interactable : MonoBehaviour {
 
@@ -11,35 +10,21 @@ public class Interactable : MonoBehaviour {
 	[SerializeField] private PlayerController _character;
 	[SerializeField] private float _interactionRange = 1.0f;
 	[SerializeField] private float _xOffset = 0.0f;
-	[SerializeField] private bool _isMouseOveUI = false;
+	[SerializeField] private bool _isException = false;
 	private bool _shouldStartInteraction = false;
 
-	// ------ Unity Handlers ------
-
-	private void Update() {
-		_isMouseOveUI = EventSystem.current.IsPointerOverGameObject();
-	}
-
 	private void OnMouseDown() {
-		if (!_isMouseOveUI) _shouldStartInteraction = true;
+		var isMouseOveUI = EventSystem.current.IsPointerOverGameObject();
+		if (!isMouseOveUI && (GameController.Instance.CanInteract() || _isException)) _shouldStartInteraction = true;
+		else _shouldStartInteraction = false;
 	}
 
 	private void OnMouseUp() {
-		if (_isMouseOveUI)
-        {
-			Debug.Log("Mouse is over UI");
-			return;
-		}	
-			
-		if (!_shouldStartInteraction) {
-			Debug.Log("Should Not Start Interaction");
-			return;
-		}
+		if (!_shouldStartInteraction) { return; }
 
-		Debug.Log("Interacted with -> " + this.name);
 		if (_needCharacter) {
 			_clickedGameObject.Value = this.gameObject;
-			_character.MoveCharacterToClickedItem(_interactionRange, _xOffset, OnInteractableReach);
+			_character.MoveCharacterToClickedItem(_interactionRange, _xOffset, OnInteractableReach, _isException);
 		} else {
 			OnInteractableReach();
 		}

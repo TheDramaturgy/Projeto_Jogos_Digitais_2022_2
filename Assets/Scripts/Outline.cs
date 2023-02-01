@@ -16,6 +16,9 @@ public class Outline : MonoBehaviour {
 	[SerializeField][ColorUsage(false, true)] private Color _mouseOverColor;
 	[SerializeField][Range(0.0f, 1.0f)] private float _mouseOverTransparency;
 
+	[Header("Interaction")]
+	[SerializeField] private bool _isException = false;
+
 	private Renderer _renderer;
 	private float _currentTransparency;
 	private bool _isMouseOver = false;
@@ -25,16 +28,11 @@ public class Outline : MonoBehaviour {
 
 
 	void Start() {
-		if (!_isEnabled) {
-			_effectiveMaxTransparency = 0.0f;
-			_effectiveMinTransparency = 0.0f;
-		} else {
-			_effectiveMaxTransparency = _maxTransparency;
-			_effectiveMinTransparency = _minTransparency;
-		}
+		_effectiveMaxTransparency = _maxTransparency;
+		_effectiveMinTransparency = _minTransparency;
 
 		_renderer = gameObject.GetComponent<Renderer>();
-		_renderer.material.SetFloat("_Transparency", _effectiveMinTransparency);
+		SetTransparency(_effectiveMinTransparency);
 		_renderer.material.SetColor("_Color", _color);
 		_renderer.material.SetFloat("_Thickness", _outlineSize);
 		_currentTransparency = _effectiveMinTransparency;
@@ -43,26 +41,26 @@ public class Outline : MonoBehaviour {
 
 	private void Update() {
 		if (!_isMouseOver && _effectiveMaxTransparency != _effectiveMinTransparency) {
-			if (_currentTransparency >= _effectiveMaxTransparency) {
-				_isIncreasing = false;
-			} else if (_currentTransparency <= _effectiveMinTransparency) {
-				_isIncreasing = true;
-			}
+			if (_currentTransparency >= _effectiveMaxTransparency) _isIncreasing = false;
+			else if (_currentTransparency <= _effectiveMinTransparency) _isIncreasing = true;
 
-			if (_isIncreasing) {
-				_currentTransparency += _transparencyVariationIntensity * Time.deltaTime;
-			} else {
-				_currentTransparency -= _transparencyVariationIntensity * Time.deltaTime;
-			}
+			if (_isIncreasing) _currentTransparency += _transparencyVariationIntensity * Time.deltaTime;
+			else _currentTransparency -= _transparencyVariationIntensity * Time.deltaTime;
 
-			_renderer.material.SetFloat("_Transparency", _currentTransparency);
+			SetTransparency(_currentTransparency);
 		}
 	}
 
-	private void OnMouseEnter() {
+	private void SetTransparency(float transparency) {
+		if ((GameController.Instance.CanInteract() || _isException) && _isEnabled) 
+			_renderer.material.SetFloat("_Transparency", transparency);
+		else _renderer.material.SetFloat("_Transparency", 0.0f);
+	}
+
+	private void OnMouseOver() {
 		if (_renderer != null && _isMouseOverEnabled) {
 			_isMouseOver = true;
-			_renderer.material.SetFloat("_Transparency", _mouseOverTransparency);
+			SetTransparency(_mouseOverTransparency);
 			_renderer.material.SetColor("_Color", _mouseOverColor);
 		}
 	}
@@ -71,7 +69,7 @@ public class Outline : MonoBehaviour {
 		if (_renderer != null && _isMouseOverEnabled) {
 			_isMouseOver = false;
 			_isIncreasing = true;
-			_renderer.material.SetFloat("_Transparency", _effectiveMinTransparency);
+			SetTransparency(_effectiveMinTransparency);
 			_renderer.material.SetColor("_Color", _color);
 		}
 	}
@@ -83,7 +81,7 @@ public class Outline : MonoBehaviour {
 
 	public void SetMaxTransparency(float value) {
 		_maxTransparency = value;
-		_renderer.material.SetFloat("_Transparency", _maxTransparency);
+		SetTransparency(_maxTransparency);
 	}
 
 	public void SetMouseOverEnable(bool value) {
@@ -92,12 +90,5 @@ public class Outline : MonoBehaviour {
 
 	public void SetEnable(bool value) {
 		_isEnabled = value;
-		if (_isEnabled) {
-			_effectiveMaxTransparency = _maxTransparency;
-			_effectiveMinTransparency = _minTransparency;
-		} else {
-			_effectiveMaxTransparency = 0.0f;
-			_effectiveMinTransparency = 0.0f;
-		}
 	}
 }
