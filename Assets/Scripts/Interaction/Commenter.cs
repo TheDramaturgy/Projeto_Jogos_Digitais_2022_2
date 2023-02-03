@@ -111,6 +111,10 @@ public class Commenter : MonoBehaviour {
 	private IEnumerator ClearDialogAfterTime() {
 		_isWaiting = true;
 
+		if (_currentDialog.duration < 0) {
+			yield break;
+		}
+
 		_speakText.text = _currentDialog.text;
 		yield return new WaitForSeconds(_currentDialog.duration);
 		ClearDialog();
