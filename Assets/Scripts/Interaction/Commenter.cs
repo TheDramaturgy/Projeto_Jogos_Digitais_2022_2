@@ -15,11 +15,32 @@ public class Commenter : MonoBehaviour {
 	private bool _isWriting = false;
 	private bool _isWaiting = false;
 	private bool _previousMovingState;
+	private bool _mustEnableControl = false;
 
 	private void Update() {
 		if (_isCommenting) {
 			if (Input.anyKeyDown) { NextAction(); }
 		}
+	}
+
+
+	public void CommentAndEnableControl(Commentary commentary) {
+		if (_isCommenting) {
+			StopCoroutine(_lastCommentCoroutine);
+			ClearDialog();
+			EndComment();
+		}
+
+		_mustEnableControl = true;
+		_isCommenting = true;
+		GameController.Instance.DisableInteraction();
+		if (_character != null) {
+			_character.SetControlable(false);
+		}
+
+		_nextCommentIndex = 0;
+		_currentCommentary = commentary;
+		NextDialog();
 	}
 
 	public void Comment(Commentary commentary) {
@@ -39,7 +60,6 @@ public class Commenter : MonoBehaviour {
 		_nextCommentIndex = 0;
 		_currentCommentary = commentary;
 		NextDialog();
-		Debug.Log("Next Dialog Called");
 	}
 
 	private void NextDialog() {
@@ -52,7 +72,6 @@ public class Commenter : MonoBehaviour {
 		_nextCommentIndex++;
 
 		_lastCommentCoroutine = WriteDialogOverTime();
-		Debug.Log("Starting WriteOverTime!");
 		StartCoroutine(_lastCommentCoroutine);
 	}
 
@@ -62,7 +81,12 @@ public class Commenter : MonoBehaviour {
 
 	private void EndComment() {
 		GameController.Instance.EnableInteraction();
-		if (_character != null) _character.SetControlable(_previousMovingState);
+		if (_character != null) {
+			if (_mustEnableControl) {
+				_character.SetControlableDelayed(true);
+				_mustEnableControl = false;
+			} else _character.SetControlableDelayed(_previousMovingState);
+		}
 		_isCommenting = false;
 	}
 

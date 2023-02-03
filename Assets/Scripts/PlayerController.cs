@@ -18,12 +18,13 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] private bool _canMove = false;
 
     [SerializeField] private GameObjectVariable _clickedItem;
-    [SerializeField] private StringVariable _moveObjective;
 	[SerializeField] private UnityEvent _itemPickupEvent;
-
 	[SerializeField] private UnityEvent _moveTargetSetEvent;
 	[SerializeField] private UnityEvent _moveTargetReachEvent;
+
 	[SerializeField] private Vector3Variable _moveTarget;
+	[SerializeField] private float _maxZPoint;
+	[SerializeField] private float _minZPoint;
 
 	// ------ Unity Handlers ------
 	void Awake() {
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Start() {
-		_moveTargetSetEvent.AddListener(HandleMovement);
+		_moveTargetSetEvent.AddListener(SetDestination);
 	}
 
 	void Update() {
@@ -48,21 +49,28 @@ public class PlayerController : MonoBehaviour {
 		UpdateMovementStatus();
         HandleAnimation();
 
-		// Maintain sprite turned to camera
+		// Fix sprite face to camera
         _transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));
     }
 
     // ------ Auxiliary Methods ------
 
     private void ListenMouseEvents() {
-		// Check if left mouse button has been clicked
-		if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject() && _canMove) {
+		// Check if left mouse button is being held down
+		if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject() && _canMove) {
 			var ray = _camera.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out RaycastHit hit)) {
 				if (hit.transform.gameObject.tag == "Walkable") {
 					_moveTargetReachEvent.RemoveAllListeners();
+
 					_moveTarget.Value = hit.point;
-					_moveObjective.Value = "ChangePosition";
+					_moveTargetSetEvent.Invoke();
+				} else if (hit.transform.gameObject.tag != "Interactable") {
+					_moveTargetReachEvent.RemoveAllListeners();
+
+					var zPoint = hit.point.z > _maxZPoint ? _maxZPoint : hit.point.z;
+					zPoint = zPoint < _minZPoint ? _minZPoint : zPoint;
+					_moveTarget.Value = new Vector3(hit.point.x, this.transform.position.y, zPoint);
 					_moveTargetSetEvent.Invoke();
 				}
 			}
@@ -79,7 +87,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	public void HandleMovement() {
+	public void SetDestination() {
 		_agent.destination = _moveTarget.Value;
     }
 
@@ -120,7 +128,6 @@ public class PlayerController : MonoBehaviour {
 		if (Vector3.Distance(targetPos, characterPos) > range) {
 			_interactionRange = range;
 			_moveTargetReachEvent.AddListener(callback);
-			_moveObjective.Value = "ItemPickup";
 			_moveTarget.Value = targetPos;
 			_moveTargetSetEvent.Invoke();
 		} else {
@@ -130,6 +137,21 @@ public class PlayerController : MonoBehaviour {
 
 	public void SetControlable(bool state) {
 		_canMove = state;
+	}
+
+	public void SetControlableDelayed(bool state) {
+		if (state) StartCoroutine(EnableControl());
+		else StartCoroutine(DisableControl());
+	}
+
+	private IEnumerator EnableControl() {
+		yield return new WaitForSeconds(0.1f);
+		_canMove = true;
+	}
+
+	private IEnumerator DisableControl() {
+		yield return new WaitForSeconds(0.1f);
+		_canMove = false;
 	}
 
 	public bool CanMove() { return _canMove; }
