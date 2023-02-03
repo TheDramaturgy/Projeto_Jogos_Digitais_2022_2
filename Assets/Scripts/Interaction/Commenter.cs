@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class Commenter : MonoBehaviour {
 	[SerializeField] private TMP_Text _speakText;
@@ -19,7 +20,7 @@ public class Commenter : MonoBehaviour {
 
 	private void Update() {
 		if (_isCommenting) {
-			if (Input.anyKeyDown) { NextAction(); }
+			if (Input.anyKeyDown && !EventSystem.current.IsPointerOverGameObject()) { NextAction(); }
 		}
 	}
 
@@ -111,11 +112,9 @@ public class Commenter : MonoBehaviour {
 	private IEnumerator ClearDialogAfterTime() {
 		_isWaiting = true;
 
-		if (_currentDialog.duration < 0) {
-			yield break;
-		}
-
+		Debug.Log("Complete dialog");
 		_speakText.text = _currentDialog.text;
+		if (_currentDialog.duration < 0) yield break;
 		yield return new WaitForSeconds(_currentDialog.duration);
 		ClearDialog();
 

@@ -246,7 +246,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _activationDelay: 1
-  index: 0
 --- !u!1 &3240005142311441818
 GameObject:
   m_ObjectHideFlags: 0

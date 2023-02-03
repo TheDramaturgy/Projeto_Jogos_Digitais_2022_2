@@ -8,11 +8,10 @@ public class NotificationDock : MonoBehaviour {
 
 	private List<GameObject> _notifications = new List<GameObject>();
 	private float _nextYPosition;
-	private int _nextIndex;
+	private Coroutine _lastPositionUpdate;
 
 	private void Start() {
-		_nextYPosition = - _spacing;
-		_nextIndex = 0;
+		_nextYPosition = -_spacing;
 	}
 
 	public void ShowNotification(GameObject prefab) {
@@ -24,29 +23,27 @@ public class NotificationDock : MonoBehaviour {
 
 			var newNotification = Instantiate(prefab, this.transform);
 			newNotification.transform.localPosition = position;
-			newNotification.GetComponent<Notification>().index = _nextIndex++;
-			_notifications.Append(newNotification);
+			_notifications.Add(newNotification);
 
 			_nextYPosition = _nextYPosition - rectTransform.rect.height - _spacing;
 		}
 	}
 
-	public void DeleteNotification(int index) {
-		var deletingNotification = _notifications[index];
-		_notifications.RemoveAt(index);
-		Destroy(deletingNotification);
-		UpdateNotificationPositions();
+	public void DeleteNotification(GameObject notification) {
+		if (_lastPositionUpdate != null) StopCoroutine(_lastPositionUpdate);
+		_notifications.Remove(notification);
+		Destroy(notification);
+		_lastPositionUpdate = StartCoroutine(UpdateNotificationPositions());
 	}
 
-	private void UpdateNotificationPositions() {
+	private IEnumerator UpdateNotificationPositions() {
 		_nextYPosition = -_spacing;
-		_nextIndex = 0;
 		foreach (var notification in _notifications) {
 			var rectTransform = notification.transform.GetComponent<RectTransform>();
 			var pos = _nextYPosition - rectTransform.rect.height * 0.5f;
 			notification.GetComponent<Notification>().UpdateYPosition(pos);
-			notification.GetComponent<Notification>().index = _nextIndex++;
 			_nextYPosition = _nextYPosition - rectTransform.rect.height - _spacing;
 		}
+		yield break;
 	}
 }

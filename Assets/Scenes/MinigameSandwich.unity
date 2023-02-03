@@ -221,37 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa66227b4c3c9d44b66ad2bcffa44c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clickedItem: {fileID: 11400000, guid: 94094541fb62d24449f6a7276dde73c3, type: 2}
-  _itemClickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: a7723aa4ad0031f45b4c15a32247d3d7, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 45868d036ada9bd4385689ee94f31351, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _itemIdentifier: 3
-  _itemCommentary: "N\xE3o h\xE1 sanduiche sem p\xE3o."
-  _itemComments: {fileID: 11400000, guid: 869257b4782696046994a102854423a5, type: 2}
   _pickupQuantity: 1
   ItemPrefab: {fileID: 6503925072122785059, guid: 23cbf25453ae67a4bb28ddf6b7e6c435, type: 3}
 --- !u!61 &347247778
@@ -416,37 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa66227b4c3c9d44b66ad2bcffa44c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clickedItem: {fileID: 11400000, guid: 94094541fb62d24449f6a7276dde73c3, type: 2}
-  _itemClickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: a7723aa4ad0031f45b4c15a32247d3d7, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 39f177c2738ca57469ba39f51b1ef07f, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _itemIdentifier: 4
-  _itemCommentary: "N\xE3o h\xE1 sanduiche sem p\xE3o."
-  _itemComments: {fileID: 11400000, guid: 869257b4782696046994a102854423a5, type: 2}
   _pickupQuantity: 1
   ItemPrefab: {fileID: 6503925072122785059, guid: b05a59cb1bfd02d499d73cfc1dd0dff5, type: 3}
 --- !u!61 &404939474
@@ -961,37 +901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa66227b4c3c9d44b66ad2bcffa44c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clickedItem: {fileID: 11400000, guid: 94094541fb62d24449f6a7276dde73c3, type: 2}
-  _itemClickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: a7723aa4ad0031f45b4c15a32247d3d7, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 9274488797021f248aad1c2b16a7691b, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _itemIdentifier: 1
-  _itemCommentary: "N\xE3o h\xE1 sanduiche sem p\xE3o."
-  _itemComments: {fileID: 11400000, guid: 869257b4782696046994a102854423a5, type: 2}
   _pickupQuantity: 1
   ItemPrefab: {fileID: 6503925072122785059, guid: 06119d6827309514cbc9b79fd7d4284d, type: 3}
 --- !u!61 &839768952
@@ -1929,37 +1839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa66227b4c3c9d44b66ad2bcffa44c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clickedItem: {fileID: 11400000, guid: 94094541fb62d24449f6a7276dde73c3, type: 2}
-  _itemClickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: a7723aa4ad0031f45b4c15a32247d3d7, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 6875c76967cb5e84790a0770c2be5b5c, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _itemIdentifier: 0
-  _itemCommentary: "N\xE3o h\xE1 sanduiche sem p\xE3o."
-  _itemComments: {fileID: 11400000, guid: 869257b4782696046994a102854423a5, type: 2}
   _pickupQuantity: 2
   ItemPrefab: {fileID: 6503925072122785059, guid: 72f9c0e08deba914a92010df45fa1373, type: 3}
 --- !u!61 &1376188689
@@ -2051,6 +1931,10 @@ PrefabInstance:
     - target: {fileID: 8586154668121244817, guid: 866908246add8a04a9fc20291e8f1095, type: 3}
       propertyPath: m_Name
       value: Global_PostProcessing
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586154668121244817, guid: 866908246add8a04a9fc20291e8f1095, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8586154668121244819, guid: 866908246add8a04a9fc20291e8f1095, type: 3}
       propertyPath: m_RootOrder
@@ -2590,6 +2474,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Global Light 2D
       objectReference: {fileID: 0}
+    - target: {fileID: 179265537966947004, guid: cab869ae7d7d4f04f88eb08ef08fd09e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 179265537966947006, guid: cab869ae7d7d4f04f88eb08ef08fd09e, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2653,6 +2541,10 @@ PrefabInstance:
     - target: {fileID: 587647738074651448, guid: 09970419c1d591847a2db474cbbfb8e3, type: 3}
       propertyPath: m_Name
       value: EventSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 587647738074651448, guid: 09970419c1d591847a2db474cbbfb8e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 587647738074651451, guid: 09970419c1d591847a2db474cbbfb8e3, type: 3}
       propertyPath: m_RootOrder
@@ -2888,37 +2780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa66227b4c3c9d44b66ad2bcffa44c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clickedItem: {fileID: 11400000, guid: 94094541fb62d24449f6a7276dde73c3, type: 2}
-  _itemClickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: a7723aa4ad0031f45b4c15a32247d3d7, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 9835561998a37d848a2826b21266ac32, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _itemIdentifier: 2
-  _itemCommentary: "N\xE3o h\xE1 sanduiche sem p\xE3o."
-  _itemComments: {fileID: 11400000, guid: 869257b4782696046994a102854423a5, type: 2}
   _pickupQuantity: 1
   ItemPrefab: {fileID: 6503925072122785059, guid: d0eedc049496b9c4f8da4139b37b6c1e, type: 3}
 --- !u!61 &2115564588
@@ -3128,7 +2990,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _inventorySet: {fileID: 11400000, guid: 3993d52cf0831c64dbcad2bd01313a77, type: 2}
-  clickedItem: {fileID: 11400000, guid: 94094541fb62d24449f6a7276dde73c3, type: 2}
+  clickedGameObject: {fileID: 0}
 --- !u!114 &1449682901277017348
 MonoBehaviour:
   m_ObjectHideFlags: 0
