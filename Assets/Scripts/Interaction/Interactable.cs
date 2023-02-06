@@ -14,8 +14,8 @@ public class Interactable : MonoBehaviour {
 	private bool _shouldStartInteraction = false;
 
 	private void OnMouseDown() {
-		var isMouseOveUI = EventSystem.current.IsPointerOverGameObject();
-		if (!isMouseOveUI && (GameController.Instance.CanInteract() || _isException)) _shouldStartInteraction = true;
+		var isMouseOverUI = EventSystem.current.IsPointerOverGameObject();
+		if (!isMouseOverUI && (GameController.Instance.CanInteract() || _isException)) _shouldStartInteraction = true;
 		else _shouldStartInteraction = false;
 	}
 

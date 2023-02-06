@@ -1,11 +1,8 @@
 using System.Collections;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour {
     private Camera _camera;
@@ -58,6 +55,13 @@ public class PlayerController : MonoBehaviour {
     private void ListenMouseEvents() {
 		// Check if left mouse button is being held down
 		if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject() && _canMove) {
+			var hitInteractable = false;
+
+			// Check if any 2D Interactable has been hited
+			var origin = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+			var hit2d = Physics2D.Raycast(origin, Vector2.zero);
+			if (hit2d.collider != null && hit2d.transform.gameObject.tag == "Interactable") hitInteractable = true;
+
 			var ray = _camera.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out RaycastHit hit)) {
 				if (hit.transform.gameObject.tag == "Walkable") {
@@ -65,7 +69,7 @@ public class PlayerController : MonoBehaviour {
 
 					_moveTarget.Value = hit.point;
 					_moveTargetSetEvent.Invoke();
-				} else if (hit.transform.gameObject.tag != "Interactable") {
+				} else if (!hitInteractable) {
 					_moveTargetReachEvent.RemoveAllListeners();
 
 					var zPoint = hit.point.z > _maxZPoint ? _maxZPoint : hit.point.z;

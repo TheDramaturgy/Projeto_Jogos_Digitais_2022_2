@@ -1,8 +1,14 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour {
-	public void LoadScene(string sceneName) {
-		SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+	public void SetActiveScene(string sceneName) {
+		StartCoroutine(ActivateScene(sceneName));
+	}
+
+	private IEnumerator ActivateScene(string sceneName) {
+		yield return null;
+		SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
 	}
 }

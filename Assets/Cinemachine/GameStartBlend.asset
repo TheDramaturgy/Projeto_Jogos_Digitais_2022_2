@@ -25,6 +25,17 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: CM vcam - Follow Bed
+    m_To: CM vcam - Follow Bed + Window
+    m_Blend:
+      m_Style: 1
+      m_Time: 2
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: CM vcam - Follow Bed + Window
     m_To: CM vcam - Follow Character
     m_Blend:
       m_Style: 1
@@ -34,4 +45,44 @@ MonoBehaviour:
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: CM vcam - Follow Character
+    m_To: CM vcam - MG - Sandwich
+    m_Blend:
+      m_Style: 0
+      m_Time: 2
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: CM vcam - MG - Sandwich
+    m_To: CM vcam - Follow Character
+    m_Blend:
+      m_Style: 0
+      m_Time: 2
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0.22324026
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 136
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0.916036
+          inSlope: 1.3037087
+          outSlope: 1.3037087
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.15432101
+          outWeight: 0.33333334
+        m_PreInfinity: 0
+        m_PostInfinity: 1
         m_RotationOrder: 0

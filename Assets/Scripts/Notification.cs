@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Notification : MonoBehaviour, IPointerDownHandler {
 	[SerializeField] private float _activationDelay = 1.0f;
 
-	private void OnEnable() {
+	private void Start() {
 		StartCoroutine(ActivationAnimation());
 	}
 
