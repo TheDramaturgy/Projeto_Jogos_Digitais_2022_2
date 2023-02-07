@@ -41,7 +41,6 @@ public class Notification : MonoBehaviour, IPointerDownHandler {
 
 	public void UpdateYPosition(float pos) {
 		_isActivating = true;
-		Debug.Log("Updating Y Position: " + pos);
 		_currentAnimation = StartCoroutine(UpdateYPositionCoroutine(pos));
 	}
 
