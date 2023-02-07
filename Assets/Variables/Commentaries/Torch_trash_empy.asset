@@ -10,17 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eabf885fec16c449e43af057a49e5f, type: 3}
-  m_Name: Torch_photo_portray_key_Commentary
+  m_Name: Torch_trash_empy
   m_EditorClassIdentifier: 
   Commentaries:
-  - "Um retrato rasgado com um peda\xE7o faltando?"
-  - Que original.
-  - "Onde que eu iria enfiar um peda\xE7o rasgado de um retrato que eu n\xE3o sei
-    por que rasguei?"
+  - "Se fosse alguns anos atr\xE1s eu faria alguma piada autodepreciativa me comparando
+    com voc\xEA."
+  - "Mas j\xE1 passei dessa fase."
   Durations:
-  - 2
-  - 1
   - 3
-  _isContinuous: 0
-  _isCyclic: 1
-  _actualComment: 1
+  - 5
+  _isContinuous: 1
+  _isCyclic: 0
+  _actualComment: 0
