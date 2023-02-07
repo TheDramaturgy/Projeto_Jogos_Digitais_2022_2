@@ -6,28 +6,49 @@ using UnityEngine.EventSystems;
 public class Notification : MonoBehaviour, IPointerDownHandler {
 	[SerializeField] private float _activationDelay = 1.0f;
 
+	private bool _isActivating = false;
+	private Coroutine _currentAnimation;
+
 	private void Start() {
-		StartCoroutine(ActivationAnimation());
+		_currentAnimation = StartCoroutine(ActivationAnimation());
 	}
 
 	private void OnDestroy() {
-		DOTween.KillAll();
+		DOTween.Kill(transform);
 	}
 
 	public void OnPointerDown(PointerEventData eventData) {
-		float exitPosition = this.transform.position.x - this.GetComponent<RectTransform>().rect.width;
-		this.transform.DOLocalMoveX(exitPosition, 1.0f).SetEase(Ease.InOutBack).OnComplete(() => {
-			transform.parent.GetComponent<NotificationDock>().DeleteNotification(this.gameObject);
+		if (_isActivating) {
+
+			StopCoroutine(_currentAnimation);
+			_isActivating = false;
+		}
+
+		float exitPosition = transform.position.x - GetComponent<RectTransform>().rect.width * 2;
+		transform.DOLocalMoveX(exitPosition, 1.0f).SetEase(Ease.InOutBack).OnComplete(() => {
+			transform.parent.GetComponent<NotificationDock>().DeleteNotification(gameObject);
 		});
 	}
 
 	private IEnumerator ActivationAnimation() {
+		_isActivating = true;
 		yield return new WaitForSeconds(_activationDelay);
-		float exitPosition = this.transform.position.x + this.GetComponent<RectTransform>().rect.width;
-		transform.DOLocalMoveX(exitPosition, 1.0f).SetEase(Ease.InOutBack);
+		var xPosition = transform.position.x + GetComponent<RectTransform>().rect.width;
+		transform.DOLocalMoveX(xPosition, 1.0f).SetEase(Ease.InOutBack).OnComplete(() => {
+			_isActivating = false;
+		});
 	}
 
 	public void UpdateYPosition(float pos) {
-		this.transform.DOLocalMoveY(pos, 0.5f).SetEase(Ease.InOutQuart);
+		_isActivating = true;
+		Debug.Log("Updating Y Position: " + pos);
+		_currentAnimation = StartCoroutine(UpdateYPositionCoroutine(pos));
+	}
+
+	public IEnumerator UpdateYPositionCoroutine(float pos) {
+		transform.DOLocalMoveY(pos, 1.0f).SetEase(Ease.InOutQuart).OnComplete(() => {
+			_isActivating = false;
+		});
+		yield break;
 	}
 }
