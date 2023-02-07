@@ -19,8 +19,7 @@ public class Notification : MonoBehaviour, IPointerDownHandler {
 
 	public void OnPointerDown(PointerEventData eventData) {
 		if (_isActivating) {
-
-			StopCoroutine(_currentAnimation);
+			if (_currentAnimation != null) StopCoroutine(_currentAnimation);
 			_isActivating = false;
 		}
 
@@ -45,7 +44,7 @@ public class Notification : MonoBehaviour, IPointerDownHandler {
 	}
 
 	public IEnumerator UpdateYPositionCoroutine(float pos) {
-		transform.DOLocalMoveY(pos, 1.0f).SetEase(Ease.InOutQuart).OnComplete(() => {
+		transform.DOLocalMoveY(pos, 0.5f).SetEase(Ease.InOutQuart).OnComplete(() => {
 			_isActivating = false;
 		});
 		yield break;
