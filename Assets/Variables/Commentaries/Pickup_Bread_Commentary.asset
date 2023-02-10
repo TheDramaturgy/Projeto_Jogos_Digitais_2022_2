@@ -16,5 +16,8 @@ MonoBehaviour:
   - Yaaaay!!!!
   - Adoro Sanduiche-iche.
   Durations:
-  - 2
-  - 3
+  - -1
+  - -1
+  _isContinuous: 0
+  _isCyclic: 0
+  _actualComment: 0

@@ -16,8 +16,8 @@ MonoBehaviour:
   - "Quem em s\xE3 conci\xEAncia faz uma TV sem bot\xF5es?"
   - "Talvez seja um design minimalista, acho que n\xE3o!"
   Durations:
-  - 2
-  - 2
+  - -1
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

@@ -15,7 +15,7 @@ public class Interactable : MonoBehaviour {
 
 	private void OnMouseDown() {
 		var isMouseOverUI = EventSystem.current.IsPointerOverGameObject();
-		if (!isMouseOverUI && (GameController.Instance.CanInteract() || _isException)) _shouldStartInteraction = true;
+		if (!isMouseOverUI && GameController.Instance.CanInteract()) _shouldStartInteraction = true;
 		else _shouldStartInteraction = false;
 	}
 

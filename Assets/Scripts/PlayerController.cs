@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -11,10 +12,11 @@ public class PlayerController : MonoBehaviour {
     private Animator _animator;
 	private float _interactionRange;
     private bool _isLookingLeft;
+	private bool _isMoving;
 
 	[SerializeField] private bool _canMove = false;
 
-    [SerializeField] private GameObjectVariable _clickedItem;
+	[SerializeField] private GameObjectVariable _clickedItem;
 	[SerializeField] private UnityEvent _itemPickupEvent;
 	[SerializeField] private UnityEvent _moveTargetSetEvent;
 	[SerializeField] private UnityEvent _moveTargetReachEvent;
@@ -83,15 +85,17 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateMovementStatus() {
 		var target = new Vector3(_moveTarget.Value.x, transform.position.y, _moveTarget.Value.z);
-		if (Vector3.Distance(target, transform.position) <= _interactionRange) {
-			_moveTargetReachEvent.Invoke();
-			_moveTargetReachEvent.RemoveAllListeners();
+		if (_isMoving && Vector3.Distance(target, transform.position) <= _interactionRange) {
 			_agent.isStopped = true;
 			_agent.ResetPath();
+
+			_moveTargetReachEvent.Invoke();
+			_moveTargetReachEvent.RemoveAllListeners();
 		}
 	}
 
 	public void SetDestination() {
+		_isMoving = true;
 		_agent.destination = _moveTarget.Value;
     }
 
@@ -131,6 +135,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (Vector3.Distance(targetPos, characterPos) > range) {
 			_interactionRange = range;
+			_moveTargetReachEvent.RemoveAllListeners();
 			_moveTargetReachEvent.AddListener(callback);
 			_moveTarget.Value = targetPos;
 			_moveTargetSetEvent.Invoke();

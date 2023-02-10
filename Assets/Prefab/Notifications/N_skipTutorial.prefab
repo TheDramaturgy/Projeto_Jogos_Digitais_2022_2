@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 3240005142106099531}
   - component: {fileID: 3240005142106099528}
   m_Layer: 5
-  m_Name: N_notificationTutorial
+  m_Name: N_skipTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ RectTransform:
   - {fileID: 3240005142640405283}
   - {fileID: 3240005142311441819}
   - {fileID: 3240005142082143590}
-  - {fileID: 9182589250837948587}
+  - {fileID: 27551167944116752}
   - {fileID: 3240005142462535572}
   m_Father: {fileID: 0}
   m_RootOrder: -1
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3221e9c69763cc54eac774a83d6682b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activationDelay: 1
+  _activationDelay: 3
 --- !u!1 &3240005142311441818
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +541,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sabia que se voc\xEA clicar nas notifica\xE7\xF5es elas somem?"
+  m_text: "Durante uma fala do personagem, voc\xEA pode avan\xE7ar clicando com o
+    mouse."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -568,8 +569,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -610,7 +611,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &6011518851312755804
+--- !u!1 &5289730112748992364
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -618,9 +619,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9182589250837948587}
-  - component: {fileID: 1510843996138304282}
-  - component: {fileID: 1391692483106110273}
+  - component: {fileID: 27551167944116752}
+  - component: {fileID: 2611663550455972245}
+  - component: {fileID: 8800071366503584598}
   m_Layer: 5
   m_Name: Separator
   m_TagString: Untagged
@@ -628,14 +629,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &9182589250837948587
+--- !u!224 &27551167944116752
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6011518851312755804}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 5289730112748992364}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -648,21 +649,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 31}
   m_SizeDelta: {x: 500, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1510843996138304282
+--- !u!222 &2611663550455972245
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6011518851312755804}
+  m_GameObject: {fileID: 5289730112748992364}
   m_CullTransparentMesh: 1
---- !u!114 &1391692483106110273
+--- !u!114 &8800071366503584598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6011518851312755804}
+  m_GameObject: {fileID: 5289730112748992364}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}

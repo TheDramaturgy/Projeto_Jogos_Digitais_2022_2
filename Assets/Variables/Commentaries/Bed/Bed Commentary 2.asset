@@ -15,7 +15,7 @@ MonoBehaviour:
   Commentaries:
   - Eu disse 5 MINUTINHOS!!!
   Durations:
-  - 5
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

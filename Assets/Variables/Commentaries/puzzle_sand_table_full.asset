@@ -17,5 +17,8 @@ MonoBehaviour:
   - "Parece at\xE9 um puzzle de videogame em que eu tenho que descobrir a ordem correta
     \U0001F914"
   Durations:
-  - 3
-  - 5
+  - -1
+  - -1
+  _isContinuous: 0
+  _isCyclic: 0
+  _actualComment: 0

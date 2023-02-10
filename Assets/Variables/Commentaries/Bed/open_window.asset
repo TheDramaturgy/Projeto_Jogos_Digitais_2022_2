@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: open_window
   m_EditorClassIdentifier: 
   Commentaries:
-  - 
   - Ta muito escuro
   - Preciso de luz!
   Durations:
-  - 1
-  - 3
-  - 5
+  - -1
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

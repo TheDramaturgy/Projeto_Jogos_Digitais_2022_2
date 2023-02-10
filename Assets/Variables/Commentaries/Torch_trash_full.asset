@@ -15,7 +15,7 @@ MonoBehaviour:
   Commentaries:
   - "Sei que \xE9 nojento, mas e se eu vasculhasse um pouco essa lixeira?"
   Durations:
-  - 3
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

@@ -16,8 +16,8 @@ MonoBehaviour:
   - 'Que haja LUZ! '
   - Voltei a ser emo!
   Durations:
-  - 2
-  - 2
+  - -1
+  - -1
   _isContinuous: 0
   _isCyclic: 1
   _actualComment: 0

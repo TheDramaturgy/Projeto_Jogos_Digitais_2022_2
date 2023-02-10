@@ -16,9 +16,6 @@ public class Outline : MonoBehaviour {
 	[SerializeField][ColorUsage(false, true)] private Color _mouseOverColor;
 	[SerializeField][Range(0.0f, 1.0f)] private float _mouseOverTransparency;
 
-	[Header("Interaction")]
-	[SerializeField] private bool _isException = false;
-
 	private Renderer _renderer;
 	private float _currentTransparency;
 	private bool _isMouseOver = false;
@@ -52,7 +49,7 @@ public class Outline : MonoBehaviour {
 	}
 
 	private void SetTransparency(float transparency) {
-		if ((GameController.Instance.CanInteract() || _isException) && _isEnabled) 
+		if (GameController.Instance.CanInteract() && _isEnabled) 
 			_renderer.material.SetFloat("_Transparency", transparency);
 		else _renderer.material.SetFloat("_Transparency", 0.0f);
 	}

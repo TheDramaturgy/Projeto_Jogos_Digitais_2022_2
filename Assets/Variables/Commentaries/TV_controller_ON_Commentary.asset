@@ -16,8 +16,8 @@ MonoBehaviour:
   - Liga!
   - Hum...
   Durations:
-  - 1
-  - 1
+  - -1
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

@@ -16,8 +16,8 @@ MonoBehaviour:
   - Eu acordei num ambiente desconhecido sem lembrar como vim parar aqui,
   - "Dormir \xE9 a \xFAltima coisa que quero fazer."
   Durations:
-  - 5
-  - 5
+  - -1
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

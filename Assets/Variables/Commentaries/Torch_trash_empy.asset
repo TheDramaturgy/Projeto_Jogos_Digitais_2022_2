@@ -17,8 +17,8 @@ MonoBehaviour:
     com voc\xEA."
   - "Mas j\xE1 passei dessa fase."
   Durations:
-  - 3
-  - 5
+  - -1
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

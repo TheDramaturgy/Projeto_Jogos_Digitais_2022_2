@@ -16,7 +16,7 @@ MonoBehaviour:
   - "De todas as coisas que eu compraria para o meu quarto, um retrato de uma chave
     n\xE3o seria prioridade."
   Durations:
-  - 5
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

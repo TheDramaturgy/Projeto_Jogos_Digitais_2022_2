@@ -15,7 +15,7 @@ MonoBehaviour:
   Commentaries:
   - "Ok, isso t\xE1 estranho, hora de levantar."
   Durations:
-  - 5
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

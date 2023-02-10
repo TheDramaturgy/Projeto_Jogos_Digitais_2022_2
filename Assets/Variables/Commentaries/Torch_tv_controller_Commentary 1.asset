@@ -19,10 +19,10 @@ MonoBehaviour:
     televis\xE3o, que ironia."
   - "Ali\xE1s, qual canal eu deveria assistir?"
   Durations:
-  - 1
-  - 1
-  - 1
-  - 1
+  - -1
+  - -1
+  - -1
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 1
