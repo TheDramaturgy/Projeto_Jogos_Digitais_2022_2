@@ -22,8 +22,8 @@ public class Interactable : MonoBehaviour {
 	private void OnMouseUp() {
 		if (!_shouldStartInteraction) { return; }
 
+		_clickedGameObject.Value = this.gameObject;
 		if (_needCharacter) {
-			_clickedGameObject.Value = this.gameObject;
 			_character.MoveCharacterToClickedItem(_interactionRange, _xOffset, OnInteractableReach, _isException);
 		} else {
 			OnInteractableReach();

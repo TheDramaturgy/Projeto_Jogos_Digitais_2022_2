@@ -33,6 +33,7 @@ public class InventoryController : MonoBehaviour {
 	// ------ Event Handlers ------
 
 	public void PickupClickedItem() {
+		Debug.Log("Clicked game Object: " + clickedGameObject.Value);
 		var clickedPickup = clickedGameObject.Value.GetComponent<PickupItem>();
 
 		// Check whether clicked GameObject have the component PickupItem

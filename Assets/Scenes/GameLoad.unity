@@ -156,6 +156,7 @@ MonoBehaviour:
   - Dormroom
   - MinigameSandwich
   _mainSceneIndex: 0
+  _completeMinigames: {fileID: 11400000, guid: 306a3a4ae2658e8478059211eb12d431, type: 2}
 --- !u!4 &761768858
 Transform:
   m_ObjectHideFlags: 0
