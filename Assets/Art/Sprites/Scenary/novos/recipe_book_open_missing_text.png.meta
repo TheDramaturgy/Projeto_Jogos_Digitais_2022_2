@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,7 +117,217 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: recipe_book_open_missing_text_0
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 147
+        width: 65
+        height: 10
+      alignment: 9
+      pivot: {x: 0.49294317, y: 0.5458725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c285686e1c03c544a92f8c621b57b97e
+      internalID: 1569847766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: recipe_book_open_missing_text_1
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 133
+        width: 66
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0bd407d51eaab04dbcc994acbf2e9d2
+      internalID: 1148680334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: recipe_book_open_missing_text_2
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 145
+        width: 68
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0490d4cf693349946a002b6d807c9d91
+      internalID: -702584048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: recipe_book_open_missing_text_3
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 120
+        width: 64
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5458725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4afe4391b41694ea6f40f3c9b57fc4
+      internalID: -126232128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: recipe_book_open_missing_text_4
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 95
+        width: 65
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db90e92bd0661124486518ca43c09940
+      internalID: 1212765108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: recipe_book_open_missing_text_5
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 82
+        width: 63
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ee797c64c6b744d82b6154f97d83ff
+      internalID: -721779417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: recipe_book_open_missing_text_6
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 70
+        width: 63
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5a433174bf73fa40a0d932f2d0ca6fc
+      internalID: 413509773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: recipe_book_open_missing_text_7
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 43
+        width: 65
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfcb2182490e9b94488a393832e24d01
+      internalID: 796432111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: recipe_book_open_missing_text_8
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 30
+        width: 65
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6c04665dec1e743a531ef551e3cc06
+      internalID: 1406701034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: recipe_book_open_missing_text_9
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 3
+        width: 267
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf2626118dbd93408be0532ecf6d125
+      internalID: 1315400316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -128,7 +338,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      recipe_book_open_missing_text_8: 1406701034
+      recipe_book_open_missing_text_4: 1212765108
+      recipe_book_open_missing_text_6: 413509773
+      recipe_book_open_missing_text_2: -702584048
+      recipe_book_open_missing_text_7: 796432111
+      recipe_book_open_missing_text_0: 1569847766
+      recipe_book_open_missing_text_3: -126232128
+      recipe_book_open_missing_text_5: -721779417
+      recipe_book_open_missing_text_9: 1315400316
+      recipe_book_open_missing_text_1: 1148680334
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
