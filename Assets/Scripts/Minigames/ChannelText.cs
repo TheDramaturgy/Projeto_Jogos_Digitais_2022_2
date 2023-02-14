@@ -9,18 +9,21 @@ public class ChannelText : MonoBehaviour {
 
 	private void Start() {
 		_currentChannelIndex = _startingChannelIndex;
+		Debug.Log("ATIVEI" + _currentChannelIndex);
 		_channelText.text = _channelTextSet.Items[_currentChannelIndex];
 	}
 
 	public void NextChannel() {
-		if (_currentChannelIndex >= _channelTextSet.Items.Count) _currentChannelIndex = 0;
+		if (_currentChannelIndex >= (_channelTextSet.Items.Count - 1)) _currentChannelIndex = 0;
 		else _currentChannelIndex++;
+		Debug.Log("current index = " + _currentChannelIndex);
 		_channelText.text = _channelTextSet.Items[_currentChannelIndex];
 	}
 
 	public void PreviousChannel() {
 		if (_currentChannelIndex <= 0) _currentChannelIndex = _channelTextSet.Items.Count-1;
 		else _currentChannelIndex--;
+		Debug.Log("current index = " + _currentChannelIndex);
 		_channelText.text = _channelTextSet.Items[_currentChannelIndex];
 	}
 }
