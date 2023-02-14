@@ -32,6 +32,7 @@ public class ItemInteractable : MonoBehaviour {
 
 		for (int i = 0; i < _expectedItemId.Count; i++) {
 			if (dropedInventoryItem.GetId() == _expectedItemId[i]) {
+				dropedInventoryItem.GetInventoryController().RemoveItem(_dropedItem);
 				Destroy(_dropedItem);
 				_onRightItemDropEvent.Invoke();
 				return;

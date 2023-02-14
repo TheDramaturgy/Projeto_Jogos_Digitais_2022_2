@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
@@ -13,6 +14,15 @@ public class GameController : MonoBehaviour {
 
 	public void DisableInteraction() { _canInteract = false; }
 	public void EnableInteraction() { _canInteract = true; }
+
+	public void SetInteractionDelayed(bool value) {
+		if (value) {
+			StartCoroutine(EnableInteractionDelayed());
+		} else {
+			StartCoroutine(DisableInteractionDelayed());
+		}
+	}
+
 	public bool CanInteract() { return _canInteract; }
 
 	public void DisableCharacterMovement() {
@@ -21,6 +31,16 @@ public class GameController : MonoBehaviour {
 
 	public void EnableCharacterMovement() {
 		_playerController.SetControlable(true);
+	}
+
+	private IEnumerator EnableInteractionDelayed() {
+		yield return new WaitForSeconds(0.1f);
+		_canInteract = true;
+	}
+
+	private IEnumerator DisableInteractionDelayed() {
+		yield return new WaitForSeconds(0.1f);
+		_canInteract = false;
 	}
 
 }

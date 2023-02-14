@@ -76,4 +76,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	public uint GetId() {
 		return _id;
 	}
+
+	public InventoryController GetInventoryController() {
+		return _actualParent.parent.GetComponent<InventoryController>();
+	}
 }

@@ -17,7 +17,7 @@ MonoBehaviour:
     m_To: CM vcam - Follow Bed
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 8
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

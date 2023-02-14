@@ -83,4 +83,8 @@ public class InventoryController : MonoBehaviour {
 		_inventoryChangeEvent.Invoke();
 	}
 
+	public void RemoveItem(GameObject item) {
+		_inventorySet.RemoveItem(item);
+	}
+
 }
