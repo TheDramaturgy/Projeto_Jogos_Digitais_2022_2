@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f3ba1fb30ceecc4e96636b8c63321a1, type: 3}
-  m_Name: channel
+  m_Name: ChannelSet
   m_EditorClassIdentifier: 
   Items:
   - 0

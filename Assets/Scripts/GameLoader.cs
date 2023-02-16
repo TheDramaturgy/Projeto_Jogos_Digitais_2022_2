@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameLoader : MonoBehaviour {
-	[SerializeField] List<string> _scenes = new List<string>();
 	[SerializeField] int _mainSceneIndex = 0;
 	[SerializeField] private RuntimeSet<string> _completeMinigames;
+	[SerializeField] List<string> _scenes = new List<string>();
+	[SerializeField] List<BoolVariable> _boolVariables = new List<BoolVariable>(); 
 
 	private void Start() {
 		_completeMinigames.Items.Clear();
 		foreach (var name in _scenes) {
 			StartCoroutine(LoadScene(name));
+		}
+		foreach (var boolVar in _boolVariables) {
+			boolVar.Value = false;
 		}
 		MinigameManager.Instance.InvokeAllMinigamesCheck();
 	}

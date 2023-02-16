@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Walkable
+  - Interactable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Main Camera
   - Water
   - UI
   - ItemInteractable
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3897737421
+    locked: 0
+  - name: Dialog Box
+    uniqueID: 2899385041
     locked: 0

@@ -152,11 +152,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714a99e28ae896d45b55e5f5922ae984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainSceneIndex: 0
+  _completeMinigames: {fileID: 11400000, guid: 306a3a4ae2658e8478059211eb12d431, type: 2}
   _scenes:
   - Dormroom
   - MinigameSandwich
-  _mainSceneIndex: 0
-  _completeMinigames: {fileID: 11400000, guid: 306a3a4ae2658e8478059211eb12d431, type: 2}
+  _boolVariables:
+  - {fileID: 11400000, guid: ceaa93719c0cbfc4aa74f8c260102cd1, type: 2}
+  - {fileID: 11400000, guid: 578cee893dc5cf947b05a9ed48897532, type: 2}
 --- !u!4 &761768858
 Transform:
   m_ObjectHideFlags: 0
