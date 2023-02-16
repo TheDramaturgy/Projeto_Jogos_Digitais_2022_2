@@ -10,12 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eabf885fec16c449e43af057a49e5f, type: 3}
-  m_Name: Torch_photo_piece_Commentary
+  m_Name: Torch_tv_controller_Commentary 1
   m_EditorClassIdentifier: 
   Commentaries:
-  - "Um peda\xE7o rasgado de uma foto atr\xE1s do p\xF4ster da DETONATION OF SOULS."
+  - Agora sim posso assistir TV!
+  - "Pera, por que tanta empolga\xE7\xE3o?"
+  - "Eu t\xF4 l\xE1 fora na internet enquanto minha consci\xEAncia comemora uma mera
+    televis\xE3o. Que ironia."
+  - ...
+  - Qual canal eu deveria assistir?
   Durations:
   - -1
+  - -1
+  - -1
+  - -1
+  - 5
   _isContinuous: 1
   _isCyclic: 0
-  _actualComment: 0
+  _actualComment: 1

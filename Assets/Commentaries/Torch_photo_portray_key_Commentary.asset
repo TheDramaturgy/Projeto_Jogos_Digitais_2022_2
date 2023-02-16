@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eabf885fec16c449e43af057a49e5f, type: 3}
-  m_Name: TV_controller_OFF_Commentary
+  m_Name: Torch_photo_portray_key_Commentary
   m_EditorClassIdentifier: 
   Commentaries:
-  - "Quem em s\xE3 conci\xEAncia faz uma TV sem bot\xF5es?"
-  - "Talvez seja um design minimalista, acho que n\xE3o!"
+  - "Um retrato rasgado com um peda\xE7o faltando? Que original."
+  - "Onde que eu iria enfiar um peda\xE7o rasgado de um retrato que eu n\xE3o sei
+    por que rasguei?"
   Durations:
   - -1
   - -1
-  _isContinuous: 1
-  _isCyclic: 0
+  - -1
+  _isContinuous: 0
+  _isCyclic: 1
   _actualComment: 0

@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eabf885fec16c449e43af057a49e5f, type: 3}
-  m_Name: window
+  m_Name: Torch_photo_piece_Commentary
   m_EditorClassIdentifier: 
   Commentaries:
-  - 'Que haja LUZ! '
-  - Voltei a ser emo!
+  - "O que uma foto rasgada est\xE1 fazendo atr\xE1s do p\xF4ster da DETONATION OF
+    SOULS?"
   Durations:
   - -1
-  - -1
-  _isContinuous: 0
-  _isCyclic: 1
+  _isContinuous: 1
+  _isCyclic: 0
   _actualComment: 0

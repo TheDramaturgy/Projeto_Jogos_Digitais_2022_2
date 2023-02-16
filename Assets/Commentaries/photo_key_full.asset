@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eabf885fec16c449e43af057a49e5f, type: 3}
-  m_Name: Pickup_Bread_Commentary
+  m_Name: photo_key_full
   m_EditorClassIdentifier: 
   Commentaries:
-  - Yaaaay!!!!
-  - Adoro Sanduiche-iche.
+  - "Quem em s\xE3 consci\xEAncia teria um retrato de uma CHAVE?"
   Durations:
   - -1
-  - -1
-  _isContinuous: 0
+  _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eabf885fec16c449e43af057a49e5f, type: 3}
-  m_Name: TV_controller_ON_Commentary
+  m_Name: Pickup_Bread_Commentary
   m_EditorClassIdentifier: 
   Commentaries:
-  - Liga!
-  - Hum...
+  - "Adoro Sandu\xEDche-\xEDche."
+  - "Mas queria comer l\xE1 fora."
   Durations:
   - -1
   - -1
