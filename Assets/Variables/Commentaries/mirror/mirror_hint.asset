@@ -10,12 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eabf885fec16c449e43af057a49e5f, type: 3}
-  m_Name: mirror_full
+  m_Name: mirror_hint
   m_EditorClassIdentifier: 
   Commentaries:
-  - CONTEMPLE-ME!
+  - "Sou s\xF3 eu ou parece que estou com cara de... fome?"
+  - Seria o momento para comer um cebola empanada com queijo derretido em cima...
+  - "Ali\xE1s, isso quebraria minha regra absoluta sobre queijo e cebola."
+  - "\"Sempre deixar queijo e cebola o mais distante poss\xEDvel para apreciar cada
+    um sozinho na boca.\""
   Durations:
   - -1
+  - 5
+  - 5
+  - 5
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

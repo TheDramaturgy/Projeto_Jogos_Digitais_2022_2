@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bed Commentary 5
   m_EditorClassIdentifier: 
   Commentaries:
-  - Eu acordei num ambiente desconhecido sem lembrar como vim parar aqui,
+  - Acordei num ambiente desconhecido sem lembrar de como vim parar aqui...
   - "Dormir \xE9 a \xFAltima coisa que quero fazer."
   Durations:
   - -1
