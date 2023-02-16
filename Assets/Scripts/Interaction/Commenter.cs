@@ -17,6 +17,7 @@ public class Commenter : MonoBehaviour {
 	private bool _isWaiting = false;
 	private bool _mustEnableControl = false;
 
+
 	private void Update() {
 		if (_isCommenting) {
 			if (Input.anyKeyDown && !EventSystem.current.IsPointerOverGameObject()) { NextAction(); }
@@ -44,6 +45,11 @@ public class Commenter : MonoBehaviour {
 	}
 
 	public void Comment(Commentary commentary) {
+		_currentCommentary = commentary;
+		PlayerActionQueue.Instance.AddAction(TriggerComment);
+	}
+
+	public void TriggerComment() {
 		if (_isCommenting) {
 			StopCoroutine(_lastCommentCoroutine);
 			ClearDialog();
@@ -52,11 +58,11 @@ public class Commenter : MonoBehaviour {
 		_isCommenting = true;
 		GameController.Instance.DisableInteraction();
 		if (_character != null) {
+			_mustEnableControl = _character.CanMove();
 			_character.SetControlable(false);
 		}
 
 		_nextCommentIndex = 0;
-		_currentCommentary = commentary;
 		NextDialog();
 	}
 
@@ -80,9 +86,10 @@ public class Commenter : MonoBehaviour {
 	private void EndComment() {
 		GameController.Instance.SetInteractionDelayed(true);
 		if (_character != null) {
-			_character.SetControlableDelayed(true);
+			_character.SetControlableDelayed(_mustEnableControl);
 		}
 		_isCommenting = false;
+		PlayerActionQueue.Instance.NextAction();
 	}
 
 	private IEnumerator WriteDialogOverTime() {
