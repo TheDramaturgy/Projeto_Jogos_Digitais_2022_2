@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MinigameSandwich.unity
     guid: 91716d4442ae360459fb3f65922ec4fb
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 88ca75f49c758c047a497f43f2c56fbe
   m_configObjects: {}
