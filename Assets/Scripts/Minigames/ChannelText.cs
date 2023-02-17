@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class ChannelText : MonoBehaviour {
 	[Header("Event")]
 	[SerializeField] private UnityEvent _onRightChannel;
+	[SerializeField] private UnityEvent _onWrongChannel;
 	[SerializeField] private string _rightChannelText;
 
 	[Header("Channel Text")]
@@ -13,8 +14,16 @@ public class ChannelText : MonoBehaviour {
 	[SerializeField] private int _startingChannelIndex;
 	private int _currentChannelIndex;
 
-	private void Start() {
+	private void Awake() {
 		_currentChannelIndex = _startingChannelIndex;
+	}
+
+	private void Start() {
+		_channelTMP.text = _channelTextSet.Items[_currentChannelIndex];
+		CheckChannel(_channelTextSet.Items[_currentChannelIndex]);
+	}
+
+	private void OnEnable() {
 		_channelTMP.text = _channelTextSet.Items[_currentChannelIndex];
 		CheckChannel(_channelTextSet.Items[_currentChannelIndex]);
 	}
@@ -35,5 +44,6 @@ public class ChannelText : MonoBehaviour {
 
 	private void CheckChannel(string value) {
 		if (value == _rightChannelText) _onRightChannel.Invoke();
+		else _onWrongChannel.Invoke();
 	}
 }

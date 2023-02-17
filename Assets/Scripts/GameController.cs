@@ -11,36 +11,34 @@ public class GameController : MonoBehaviour {
 		if (Instance != null && Instance != this) Destroy(this);
 		else Instance = this;
 	}
-
-	public void DisableInteraction() { _canInteract = false; }
-	public void EnableInteraction() { _canInteract = true; }
+	public bool CanInteract() => _canInteract;
+	public void DisableInteraction() => _canInteract = false;
+	public void EnableInteraction() => _canInteract = true;
+	public void DisableInteractionDelayed() => StartCoroutine(DisableInteractionAfterSeconds(0.1f));
+	public void EnableInteractionDelayed() => StartCoroutine(EnableInteractionAfterSeconds(0.1f));
 
 	public void SetInteractionDelayed(bool value) {
 		if (value) {
-			StartCoroutine(EnableInteractionDelayed());
+			StartCoroutine(EnableInteractionAfterSeconds(0.1f));
 		} else {
-			StartCoroutine(DisableInteractionDelayed());
+			StartCoroutine(DisableInteractionAfterSeconds(0.1f));
 		}
 	}
 
-	public bool CanInteract() { return _canInteract; }
-
-	public void DisableCharacterMovement() {
-		_playerController.SetControlable(false);
-	}
-
-	public void EnableCharacterMovement() {
-		_playerController.SetControlable(true);
-	}
-
-	private IEnumerator EnableInteractionDelayed() {
-		yield return new WaitForSeconds(0.1f);
+	private IEnumerator EnableInteractionAfterSeconds(float seconds) {
+		yield return new WaitForSeconds(seconds);
 		_canInteract = true;
 	}
 
-	private IEnumerator DisableInteractionDelayed() {
-		yield return new WaitForSeconds(0.1f);
+	private IEnumerator DisableInteractionAfterSeconds(float seconds) {
+		yield return new WaitForSeconds(seconds);
 		_canInteract = false;
 	}
+
+	public bool CanMove() => _playerController.CanMove();
+	public void DisableCharacterMovement() =>_playerController.SetControlable(false);
+	public void EnableCharacterMovement() => _playerController.SetControlable(true);
+	public void DisableCharacterMovementDelayed() => _playerController.SetControlableDelayed(false);
+	public void EnableCharacterMovementDelayed() => _playerController.SetControlableDelayed(true);
 
 }

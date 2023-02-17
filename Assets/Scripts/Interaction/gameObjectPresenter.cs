@@ -11,10 +11,8 @@ public class gameObjectPresenter : MonoBehaviour {
 
 	void Update() {
 		if (_isPresenting) {
-			if (Input.anyKeyDown && !EventSystem.current.IsPointerOverGameObject()) {
+			if (Input.anyKeyDown && _isPresenting && !EventSystem.current.IsPointerOverGameObject()) {
 				_objectPresented.SetActive(false);
-				//GameController.Instance.SetInteractionDelayed(true);
-				//_character.SetControlableDelayed(true);
 				_isPresenting = false;
 				PlayerActionQueue.Instance.NextAction();
 			}
@@ -27,9 +25,6 @@ public class gameObjectPresenter : MonoBehaviour {
 	}
 
 	public void TriggerShowGameObject() {
-		//GameController.Instance.DisableInteraction();
-		//_character.SetControlable(false);
-
 		_objectPresented.SetActive(true);
 		_isPresenting = true;
 	}

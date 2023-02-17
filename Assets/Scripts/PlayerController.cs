@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
 	private float _interactionRange;
     private bool _isLookingLeft;
 	private bool _isMoving;
+	private bool _movementDetectionAllowed;
 
 	[SerializeField] private bool _canMove = false;
 
@@ -55,8 +56,12 @@ public class PlayerController : MonoBehaviour {
     // ------ Auxiliary Methods ------
 
     private void ListenMouseEvents() {
+		if (Input.GetMouseButtonDown(0)) {
+			if (_canMove && !EventSystem.current.IsPointerOverGameObject()) _movementDetectionAllowed = true;
+			else _movementDetectionAllowed = false;
+		}
 		// Check if left mouse button is being held down
-		if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject() && _canMove) {
+		if (Input.GetMouseButton(0)  && _movementDetectionAllowed) {
 			var hitInteractable = false;
 
 			// Check if any 2D Interactable has been hited
