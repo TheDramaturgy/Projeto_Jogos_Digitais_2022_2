@@ -1,22 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class InventoryController : MonoBehaviour {
 
 	[SerializeField] private UnityEvent _notEnoughIventorySlotsEvent;
 	[SerializeField] private UnityEvent _inventoryChangeEvent;
+	[SerializeField] private UnityEvent _onFirstItemPickupEvent;
 
 	[SerializeField] private InventorySet _inventorySet;
 	[SerializeField] private GameObjectVariable clickedGameObject;
 
 	private readonly List<GameObject> _slots = new();
+	private bool _firstPickupItem;
 
 	// ------ Unity Handlers ------
 
 	void Awake() {
+		_firstPickupItem = true;
 		for (int i = 0; i < this.transform.childCount; ++i) {
 			var currentSlot = this.transform.GetChild(i).gameObject;
 			currentSlot.GetComponent<InventorySlot>().SetIndex(i);
@@ -51,6 +52,12 @@ public class InventoryController : MonoBehaviour {
 			// Disable picked up item GameObject
 			clickedGameObject.Value.SetActive(false);
 			_inventoryChangeEvent.Invoke();
+
+			// Check if it is the first pickup item
+			if (_firstPickupItem) {
+				_firstPickupItem = false;
+				_onFirstItemPickupEvent.Invoke();
+			}
 		} else {
 			Debug.Log("Not enough free inventory slots.");
 			_notEnoughIventorySlotsEvent.Invoke();
