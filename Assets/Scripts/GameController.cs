@@ -36,9 +36,17 @@ public class GameController : MonoBehaviour {
 	}
 
 	public bool CanMove() => _playerController.CanMove();
-	public void DisableCharacterMovement() =>_playerController.SetControlable(false);
-	public void EnableCharacterMovement() => _playerController.SetControlable(true);
-	public void DisableCharacterMovementDelayed() => _playerController.SetControlableDelayed(false);
-	public void EnableCharacterMovementDelayed() => _playerController.SetControlableDelayed(true);
+	public void DisableCharacterMovement() {
+		if (_playerController.isActiveAndEnabled) _playerController.SetControlable(false);
+	}
+	public void EnableCharacterMovement() {
+		if (_playerController.isActiveAndEnabled) _playerController.SetControlable(true);
+	}
+	public void DisableCharacterMovementDelayed() {
+		if (_playerController.isActiveAndEnabled) _playerController.SetControlableDelayed(false);
+	}
+	public void EnableCharacterMovementDelayed() {
+		if (_playerController.isActiveAndEnabled) _playerController.SetControlableDelayed(true);
+	}
 
 }
