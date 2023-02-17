@@ -9,23 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f3ba1fb30ceecc4e96636b8c63321a1, type: 3}
-  m_Name: ChannelSet
+  m_Script: {fileID: 11500000, guid: 2254438ac79e46f4ba7c1c68d7e3ba78, type: 3}
+  m_Name: CompletouSanduiche
   m_EditorClassIdentifier: 
-  Items:
-  - 0
-  - 2
-  - 109
-  - 49
-  - 177
-  - 333
-  - 249
-  - 3
-  - 25
-  - 119
-  - 666
-  - 213
-  - 149
-  - 349
-  - 420
-  - 666
+  _value: 0
