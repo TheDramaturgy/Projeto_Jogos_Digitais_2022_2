@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Torch_tip_recibe_book
   m_EditorClassIdentifier: 
   Commentaries:
-  - "Estranho, tem uns peda\xE7os do livro espalhados aqui."
+  - "A boa culin\xE1ria joga seus temperos por cima dos vegetais"
   Durations:
   - -1
   _isContinuous: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: door_close_commentary
   m_EditorClassIdentifier: 
   Commentaries:
-  - 'Enfim, luz! '
+  - "Talvez eu ainda n\xE3o tenha feito tudo que preciso."
   Durations:
   - -1
   _isContinuous: 0
