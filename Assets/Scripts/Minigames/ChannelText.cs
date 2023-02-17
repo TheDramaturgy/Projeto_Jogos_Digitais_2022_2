@@ -12,6 +12,7 @@ public class ChannelText : MonoBehaviour {
 	[SerializeField] private TMP_Text _channelTMP;
 	[SerializeField] private StringRuntimeSet _channelTextSet;
 	[SerializeField] private int _startingChannelIndex;
+
 	private int _currentChannelIndex;
 
 	private void Awake() {

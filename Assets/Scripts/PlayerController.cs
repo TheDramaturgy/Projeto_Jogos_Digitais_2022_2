@@ -70,15 +70,18 @@ public class PlayerController : MonoBehaviour {
 			if (hit2d.collider != null && hit2d.transform.gameObject.tag == "Interactable") hitInteractable = true;
 
 			var ray = _camera.ScreenPointToRay(Input.mousePosition);
+			Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red, 6000);
 			if (Physics.Raycast(ray, out RaycastHit hit)) {
 				if (hit.transform.gameObject.tag == "Walkable") {
 					_moveTargetReachEvent.RemoveAllListeners();
 
+					_interactionRange = 0.01f;
 					_moveTarget.Value = hit.point;
 					_moveTargetSetEvent.Invoke();
 				} else if (!hitInteractable) {
 					_moveTargetReachEvent.RemoveAllListeners();
 
+					_interactionRange = 0.01f;
 					var zPoint = hit.point.z > _maxZPoint ? _maxZPoint : hit.point.z;
 					zPoint = zPoint < _minZPoint ? _minZPoint : zPoint;
 					_moveTarget.Value = new Vector3(hit.point.x, this.transform.position.y, zPoint);
