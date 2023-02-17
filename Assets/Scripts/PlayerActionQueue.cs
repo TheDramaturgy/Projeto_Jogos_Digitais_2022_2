@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.TextCore.Text;
 
 public class PlayerActionQueue : MonoBehaviour {
 	private Queue<UnityAction> _actionQueue = new();
@@ -26,12 +27,26 @@ public class PlayerActionQueue : MonoBehaviour {
 	}
 
 	private void CheckQueueExecution() {
-		Debug.Log("Check Queue");
-		if (_isActing || _actionQueue.Count <= 0) return;
+		if (_isActing) {
+			return;
+		} else if (_actionQueue.Count <= 0) {
+			EnableControl();
+			return;
+		}
 		
 		_isActing = true;
+		DisableControl();
 		var action = _actionQueue.Dequeue();
-		Debug.Log("Executing -> " + action.Target.ToString());
 		action.Invoke();
+	}
+
+	private void DisableControl() {
+		GameController.Instance.DisableInteraction();
+		GameController.Instance.DisableCharacterMovement();
+	}
+
+	private void EnableControl() {
+		GameController.Instance.EnableInteraction();
+		GameController.Instance.EnableCharacterMovement();
 	}
 }

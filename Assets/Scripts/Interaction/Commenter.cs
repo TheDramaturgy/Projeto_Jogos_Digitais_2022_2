@@ -16,6 +16,7 @@ public class Commenter : MonoBehaviour {
 	private bool _isWriting = false;
 	private bool _isWaiting = false;
 	private bool _mustEnableControl = false;
+	private bool _previousControl;
 
 
 	private void Update() {
@@ -34,10 +35,10 @@ public class Commenter : MonoBehaviour {
 
 		_mustEnableControl = true;
 		_isCommenting = true;
-		GameController.Instance.DisableInteraction();
-		if (_character != null) {
-			_character.SetControlable(false);
-		}
+		//GameController.Instance.DisableInteraction();
+		//if (_character != null) {
+		//	_character.SetControlable(false);
+		//}
 
 		_nextCommentIndex = 0;
 		_currentCommentary = commentary;
@@ -56,11 +57,11 @@ public class Commenter : MonoBehaviour {
 		}
 
 		_isCommenting = true;
-		GameController.Instance.DisableInteraction();
-		if (_character != null) {
-			_mustEnableControl = _character.CanMove();
-			_character.SetControlable(false);
-		}
+		//GameController.Instance.DisableInteraction();
+		//if (_character != null) {
+		//	_previousControl = _character.CanMove();
+		//	_character.SetControlable(false);
+		//}
 
 		_nextCommentIndex = 0;
 		NextDialog();
@@ -84,10 +85,11 @@ public class Commenter : MonoBehaviour {
 	}
 
 	private void EndComment() {
-		GameController.Instance.SetInteractionDelayed(true);
-		if (_character != null) {
-			_character.SetControlableDelayed(_mustEnableControl);
-		}
+		//GameController.Instance.SetInteractionDelayed(true);
+		//if (_character != null) {
+		//	if (_mustEnableControl) _character.SetControlableDelayed(true);
+		//	else _character.SetControlableDelayed(_previousControl);
+		//}
 		_isCommenting = false;
 		PlayerActionQueue.Instance.NextAction();
 	}
