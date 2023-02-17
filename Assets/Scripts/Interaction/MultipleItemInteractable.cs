@@ -12,7 +12,7 @@ public class MultipleItemInteractable : MonoBehaviour {
 	[SerializeField] private float _interactionRange = 1.0f;
 	[SerializeField] private float _xOffset = 0.0f;
 
-	[Header("Expected Items ---------------")]
+	[Header("--------------- Expected Items ---------------")]
 	[SerializeField] private List<int> _expectedItemIds = new();
 	[SerializeField] private List<UnityEvent> _onRightItemDropEvents = new();
 	

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class DelayedEvent : MonoBehaviour {
 	[SerializeField] private UnityEvent _onDelayReach;
+	[SerializeField] private UnityEvent _onCoditionNotMet;
 	[SerializeField] private List<BoolVariable> _conditions;
 	[SerializeField] private float _delaySeconds = 1.0f;
 
@@ -13,7 +14,10 @@ public class DelayedEvent : MonoBehaviour {
 	public void TriggerDelayedEvent() {
 		if (_conditions.Count > 0) {
 			foreach (var condition in _conditions) {
-				if (!condition.Value) return;
+				if (!condition.Value) {
+					_onCoditionNotMet.Invoke();
+					return;
+				}
 			}
 		}
 		Debug.Log("Disparing Delayed Action");
