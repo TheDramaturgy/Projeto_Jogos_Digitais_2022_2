@@ -57,20 +57,22 @@ public class PlayerController : MonoBehaviour {
 
     private void ListenMouseEvents() {
 		if (Input.GetMouseButtonDown(0)) {
-			if (_canMove && !EventSystem.current.IsPointerOverGameObject()) _movementDetectionAllowed = true;
-			else _movementDetectionAllowed = false;
-		}
-		// Check if left mouse button is being held down
-		if (Input.GetMouseButton(0)  && _movementDetectionAllowed) {
-			var hitInteractable = false;
-
 			// Check if any 2D Interactable has been hited
 			var origin = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
 			var hit2d = Physics2D.Raycast(origin, Vector2.zero);
-			if (hit2d.collider != null && hit2d.transform.gameObject.tag == "Interactable") hitInteractable = true;
+
+			if (hit2d.collider != null && hit2d.transform.gameObject.tag == "Interactable") {
+				_movementDetectionAllowed = false;
+			} else if (_canMove && !EventSystem.current.IsPointerOverGameObject()) {
+				_movementDetectionAllowed = true;
+			} else {
+				_movementDetectionAllowed = false;
+			}
+		}
+		// Check if left mouse button is being held down
+		if (Input.GetMouseButton(0)  && _movementDetectionAllowed) {
 
 			var ray = _camera.ScreenPointToRay(Input.mousePosition);
-			Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red, 6000);
 			if (Physics.Raycast(ray, out RaycastHit hit)) {
 				if (hit.transform.gameObject.tag == "Walkable") {
 					_moveTargetReachEvent.RemoveAllListeners();
@@ -78,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 					_interactionRange = 0.01f;
 					_moveTarget.Value = hit.point;
 					_moveTargetSetEvent.Invoke();
-				} else if (!hitInteractable) {
+				} else {
 					_moveTargetReachEvent.RemoveAllListeners();
 
 					_interactionRange = 0.01f;
