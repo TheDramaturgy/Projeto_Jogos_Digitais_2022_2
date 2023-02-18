@@ -1,5 +1,3 @@
-using Unity.Burst.CompilerServices;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,6 +8,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	private Transform _actualParent;
 	private Transform _previousParent;
 	private Image _image;
+	private bool _previousControlState;
 
 	// ------ Unity Handlers ------
 	void Start() {
@@ -18,7 +17,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	}
 
 	public void OnBeginDrag(PointerEventData eventData) {
+		_previousControlState = GameController.Instance.CanMove();
 		GameController.Instance.DisableCharacterMovement();
+
 		transform.SetParent(transform.parent.parent.parent);
 		transform.SetAsLastSibling();
 		_image.raycastTarget = false;
@@ -29,7 +30,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	}
 
 	public void OnEndDrag(PointerEventData eventData) {
-		GameController.Instance.EnableCharacterMovement();
+		if (_previousControlState) GameController.Instance.EnableCharacterMovement();
+		else GameController.Instance.DisableCharacterMovement();
+
 		UpdatePosition();
 		CheckDropInteraction();
 		_image.raycastTarget = true;

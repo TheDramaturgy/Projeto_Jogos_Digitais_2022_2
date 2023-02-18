@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour {
 	[SerializeField] private UnityEvent _onSceneDeactivation;
 	[SerializeField] private string _thisSceneName;
 	private Scene _thisScene;
+	private Coroutine _sceneActivationCoroutine;
 
 	private void Start() {
 		_thisScene = SceneManager.GetSceneByName(_thisSceneName);
@@ -17,8 +18,9 @@ public class SceneController : MonoBehaviour {
 
 	private void ChangedActiveScene(Scene current, Scene next) {
 		if (next == _thisScene) {
-			StartCoroutine(SceneActivationEvent());
+			_sceneActivationCoroutine = StartCoroutine(SceneActivationEvent());
 		} else if (current == _thisScene) {
+			if (_sceneActivationCoroutine != null) StopCoroutine(_sceneActivationCoroutine);
 			_onSceneDeactivation.Invoke();
 		}
 	}

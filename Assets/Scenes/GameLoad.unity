@@ -157,6 +157,7 @@ MonoBehaviour:
   _scenes:
   - Dormroom
   - MinigameSandwich
+  - MinigameRecipe
   - Credits
   _boolVariables:
   - {fileID: 11400000, guid: eb476f629f5551e48ba498af480b7311, type: 2}
