@@ -17,8 +17,10 @@ public class Interactable : MonoBehaviour {
 	private void OnMouseDown() {
 		var isMouseOverUI = EventSystem.current.IsPointerOverGameObject();
 		if (!isMouseOverUI && GameController.Instance.CanInteract()) {
-			_previousControl = _character.CanMove();
-			_character.SetControlable(false);
+			if (_character != null && _character.isActiveAndEnabled) {
+				_previousControl = _character.CanMove();
+				_character.SetControlable(false);
+			}
 			_shouldStartInteraction = true;
 		} else _shouldStartInteraction = false;
 	}
@@ -26,7 +28,8 @@ public class Interactable : MonoBehaviour {
 	private void OnMouseUp() {
 		if (!_shouldStartInteraction) { return; }
 
-		_character.SetControlable(_previousControl);
+		if (_character != null && _character.isActiveAndEnabled)
+			_character.SetControlable(_previousControl);
 		_clickedGameObject.Value = this.gameObject;
 		if (_needCharacter) {
 			_character.MoveCharacterToClickedItem(_interactionRange, _xOffset, OnInteractableReach, _isException);
