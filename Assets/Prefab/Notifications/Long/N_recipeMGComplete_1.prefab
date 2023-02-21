@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 3240005142106099531}
   - component: {fileID: 3240005142106099528}
   m_Layer: 5
-  m_Name: N_sandwichTutorial
+  m_Name: N_recipeMGComplete_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +179,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -74}
-  m_SizeDelta: {x: 512, y: 128}
+  m_SizeDelta: {x: 1080, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3240005142106099530
 CanvasRenderer:
@@ -246,7 +246,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3221e9c69763cc54eac774a83d6682b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activationDelay: 3
+  _activationDelay: 0.1
+  _timeUntilExit: -1
+  _speakText: {fileID: 3240005142835851303}
+  _commentary: {fileID: 11400000, guid: 7355aec1c68998742aa4190ca2c763a3, type: 2}
 --- !u!1 &3240005142311441818
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,8 +544,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Eu  posso completar o sandu\xEDche reordenando os ingrediente no invent\xE1rio
-    da direita."
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -339,8 +339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a53f38b736cd4b90d7cb2175cb110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotIndex: 6
-  _occupyingIndex: 0
+  _idx: 6
+  _textId: -1
+  _validator: {fileID: 1070529390}
 --- !u!70 &297208433
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -556,9 +557,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1132272128}
+        m_TargetAssemblyTypeName: NotificationDock, Assembly-CSharp
+        m_MethodName: AddNotificationToQueue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3240005142106099535, guid: 1c27b6e2fbf821744b096c13b2adfea5, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _onSceneDeactivation:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1132272128}
+        m_TargetAssemblyTypeName: NotificationDock, Assembly-CSharp
+        m_MethodName: ClearAllNotifications
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1329845569}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1387,8 +1412,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a53f38b736cd4b90d7cb2175cb110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotIndex: 5
-  _occupyingIndex: 0
+  _idx: 5
+  _textId: -1
+  _validator: {fileID: 1070529390}
 --- !u!70 &762316364
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1813,6 +1839,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 587647738074651451, guid: 09970419c1d591847a2db474cbbfb8e3, type: 3}
   m_PrefabInstance: {fileID: 896105402}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1044153270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1044153271}
+  - component: {fileID: 1044153272}
+  m_Layer: 0
+  m_Name: ActionQueue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1044153271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044153270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1731515786}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1044153272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044153270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1cc3b54d831854397382c91f04629a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1049615977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,6 +2165,102 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1070529388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070529389}
+  - component: {fileID: 1070529390}
+  m_Layer: 0
+  m_Name: MingameValidator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1070529389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070529388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1731515786}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1070529390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070529388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b0df762bd62c7428a424e2fbcd2eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onMinigameComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1044153272}
+        m_TargetAssemblyTypeName: ActionQueue, Assembly-CSharp
+        m_MethodName: InterruptCurrentAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1132272128}
+        m_TargetAssemblyTypeName: NotificationDock, Assembly-CSharp
+        m_MethodName: ClearAllNotifications
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1132272128}
+        m_TargetAssemblyTypeName: NotificationDock, Assembly-CSharp
+        m_MethodName: AddNotificationToQueue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3240005142106099535, guid: fd12226ed97a87b49a14f38d2a5d20b4, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 391666389}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: QueueSetActiveScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Dormroom
+          m_BoolArgument: 0
+        m_CallState: 2
+  _isRecipeMinigameComplete: {fileID: 11400000, guid: d3cdf85c3d1f9524291ca5b4038d7eb3, type: 2}
 --- !u!1 &1106803978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,8 +2306,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a53f38b736cd4b90d7cb2175cb110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotIndex: 2
-  _occupyingIndex: 0
+  _idx: 2
+  _textId: -1
+  _validator: {fileID: 1070529390}
 --- !u!70 &1106803981
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2158,6 +2325,96 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.3, y: 0.1}
   m_Direction: 1
+--- !u!1 &1132272126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1132272127}
+  - component: {fileID: 1132272130}
+  - component: {fileID: 1132272129}
+  - component: {fileID: 1132272128}
+  m_Layer: 0
+  m_Name: Notification Dock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1132272127
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132272126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1329845570}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &1132272128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132272126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedbf76ed57643f43945b100c0d60991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spacing: 10
+--- !u!114 &1132272129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132272126}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5719023, g: 0, b: 1, a: 0.22745098}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1132272130
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132272126}
+  m_CullTransparentMesh: 1
 --- !u!1 &1308311171
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,7 +2539,7 @@ GameObject:
   - component: {fileID: 1329845572}
   - component: {fileID: 1329845571}
   m_Layer: 0
-  m_Name: UI
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2301,6 +2558,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1899191674}
+  - {fileID: 1132272127}
   m_Father: {fileID: 1731515786}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2450,8 +2708,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a53f38b736cd4b90d7cb2175cb110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotIndex: 0
-  _occupyingIndex: 0
+  _idx: 0
+  _textId: -1
+  _validator: {fileID: 1070529390}
 --- !u!70 &1518692715
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2966,6 +3225,8 @@ Transform:
   - {fileID: 896105404}
   - {fileID: 1329845570}
   - {fileID: 391666387}
+  - {fileID: 1070529389}
+  - {fileID: 1044153271}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3185,8 +3446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a53f38b736cd4b90d7cb2175cb110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotIndex: 4
-  _occupyingIndex: 0
+  _idx: 4
+  _textId: -1
+  _validator: {fileID: 1070529390}
 --- !u!70 &1745135530
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3248,8 +3510,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a53f38b736cd4b90d7cb2175cb110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotIndex: 3
-  _occupyingIndex: 0
+  _idx: 3
+  _textId: -1
+  _validator: {fileID: 1070529390}
 --- !u!70 &1748364827
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3380,11 +3643,11 @@ Transform:
   m_Children:
   - {fileID: 1065316558}
   - {fileID: 532458792}
-  - {fileID: 1733617121}
   - {fileID: 204625114}
-  - {fileID: 863643453}
   - {fileID: 1693686906}
   - {fileID: 1717681555}
+  - {fileID: 1733617121}
+  - {fileID: 863643453}
   - {fileID: 568578713}
   m_Father: {fileID: 343987156}
   m_RootOrder: -1
@@ -3559,8 +3822,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a53f38b736cd4b90d7cb2175cb110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotIndex: 1
-  _occupyingIndex: 0
+  _idx: 1
+  _textId: -1
+  _validator: {fileID: 1070529390}
 --- !u!70 &1821866293
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3965,8 +4229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a53f38b736cd4b90d7cb2175cb110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slotIndex: 7
-  _occupyingIndex: 0
+  _idx: 7
+  _textId: -1
+  _validator: {fileID: 1070529390}
 --- !u!70 &2032084429
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
