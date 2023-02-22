@@ -17,9 +17,11 @@ MonoBehaviour:
   - "Minha m\xE3e tinha me chamado para jantar."
   - "Hora de largar o celular e comer um sandu\xEDche-\xEDche."
   - "At\xE9 mais, minha cabe\xE7a. "
+  - Vou abrir aquela porta.
   Durations:
   - -1
   - -1
+  - 5
   - 5
   - 5
   _isContinuous: 1
