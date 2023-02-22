@@ -18829,6 +18829,7 @@ GameObject:
   - component: {fileID: 1714765953}
   - component: {fileID: 1714765952}
   - component: {fileID: 1714765954}
+  - component: {fileID: 1714765955}
   m_Layer: 0
   m_Name: door_close
   m_TagString: Untagged
@@ -19140,6 +19141,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1714765955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714765947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391acdc71e483a1469f7c62e4d45c174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onRightItemDropEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _onWrongItemDropEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1647490140}
+        m_TargetAssemblyTypeName: Commenter, Assembly-CSharp
+        m_MethodName: Comment
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 83d205499f8218d4a84a5baba02b1e08, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Commentary, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _needCharacter: 1
+  _clickedGameObject: {fileID: 11400000, guid: 94094541fb62d24449f6a7276dde73c3, type: 2}
+  _character: {fileID: 1647490131}
+  _expectedItemId: 
+  _interactionRange: 0.25
+  _xOffset: 0.4
 --- !u!43 &1722125855
 Mesh:
   m_ObjectHideFlags: 0
