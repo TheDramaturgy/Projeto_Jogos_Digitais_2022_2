@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: ChannelSet
   m_EditorClassIdentifier: 
   Items:
-  - 0
-  - 2
+  - 000
+  - 002
   - 109
-  - 49
+  - 549
   - 177
   - 333
   - 249
-  - 3
-  - 25
+  - 030
+  - 250
   - 119
   - 666
   - 213
