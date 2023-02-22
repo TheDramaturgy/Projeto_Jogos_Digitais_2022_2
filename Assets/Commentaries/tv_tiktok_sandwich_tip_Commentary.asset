@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: tv_tiktok_sandwich_tip_Commentary
   m_EditorClassIdentifier: 
   Commentaries:
-  - "\"O queijo deve ficar o mais perto poss\xEDvel da fonte de calor para derreter.\""
-  - "\"Ent\xE3o monte seu sandu\xEDche pensando nisso!\""
+  - "\"Voltamos para a programa\xE7\xE3o usual de Curiosidades do Dia a Dia\""
+  - '"Sabia que as sanduicheiras aquecem pela chapa de baixo?"'
+  - "\"Ent\xE3o monte seu sandu\xEDche com o queijo perto dela para derreter!\""
   Durations:
   - -1
   - -1
+  - 5
+  - 5
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

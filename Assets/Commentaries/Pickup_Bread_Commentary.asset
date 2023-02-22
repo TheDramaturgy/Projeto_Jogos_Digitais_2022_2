@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: Pickup_Bread_Commentary
   m_EditorClassIdentifier: 
   Commentaries:
-  - "Adoro Sandu\xEDche-\xEDche."
-  - "Mas queria comer l\xE1 fora."
+  - Era isso que estava faltando!
+  - "Minha m\xE3e tinha me chamado para jantar."
+  - "Hora de largar o celular e comer um sandu\xEDche-\xEDche."
+  - "At\xE9 mais, minha cabe\xE7a. "
   Durations:
   - -1
   - -1
+  - 5
+  - 5
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

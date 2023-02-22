@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: door_close_commentary
   m_EditorClassIdentifier: 
   Commentaries:
-  - "Talvez eu ainda n\xE3o tenha feito tudo que preciso."
+  - "Est\xE1 trancada. Falta alguma coisa..."
   Durations:
   - -1
   _isContinuous: 0
