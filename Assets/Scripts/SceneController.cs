@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -26,7 +25,7 @@ public class SceneController : MonoBehaviour {
 	}
 
 	private IEnumerator SceneActivationEvent() {
-		yield return new WaitForSeconds(Time.deltaTime * 5);
+		yield return new WaitForSeconds(0.1f);
 		_onSceneActivation.Invoke();
 	}
 }

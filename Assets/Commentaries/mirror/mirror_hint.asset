@@ -20,9 +20,9 @@ MonoBehaviour:
     um sozinho na boca.\""
   Durations:
   - -1
-  - 5
-  - 5
-  - 5
+  - -1
+  - -1
+  - -1
   _isContinuous: 1
   _isCyclic: 0
   _actualComment: 0

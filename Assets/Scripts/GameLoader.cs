@@ -7,16 +7,14 @@ public class GameLoader : MonoBehaviour {
 	[SerializeField] int _mainSceneIndex = 0;
 	[SerializeField] private RuntimeSet<string> _completeMinigames;
 	[SerializeField] List<string> _scenes = new List<string>();
-	[SerializeField] List<BoolVariable> _boolVariables = new List<BoolVariable>(); 
+	[SerializeField] List<BoolVariable> _boolVariables = new List<BoolVariable>();
 
 	private void Start() {
 		_completeMinigames.Items.Clear();
 		foreach (var name in _scenes) {
 			StartCoroutine(LoadScene(name));
 		}
-		foreach (var boolVar in _boolVariables) {
-			boolVar.Value = false;
-		}
+		ResetBoolVariables();
 		MinigameManager.Instance.InvokeAllMinigamesCheck();
 	}
 
@@ -31,6 +29,19 @@ public class GameLoader : MonoBehaviour {
 
 		if (_scenes[_mainSceneIndex].Equals(name)) {
 			SceneManager.SetActiveScene(SceneManager.GetSceneByName(name));
+		}
+	}
+
+	private void ResetBoolVariables() {
+		foreach (var boolVar in _boolVariables) {
+			boolVar.Value = false;
+		}
+	}
+
+	private void UnloadAllScenes() {
+		foreach (var sceneName in _scenes) {
+			var operation = SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(sceneName));
+			while(!operation.isDone) { continue; }
 		}
 	}
 

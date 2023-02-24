@@ -19,6 +19,15 @@ public class SceneChanger : MonoBehaviour {
 		ActionQueue.Instance.NextAction();
 	}
 
+	public void Quit() {
+#if UNITY_STANDALONE
+		Application.Quit();
+#endif
+#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+#endif
+	}
+
 	private IEnumerator ActivateScene(string sceneName) {
 		yield return null;
 		SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));

@@ -21,7 +21,7 @@ public class Commentary : ScriptableObject {
 
 	private void OnValidate() {
 		while (Commentaries.Count > Durations.Count) {
-			Durations.Add(5.0f);
+			Durations.Add(-1.0f);
 		}
 	}
 
