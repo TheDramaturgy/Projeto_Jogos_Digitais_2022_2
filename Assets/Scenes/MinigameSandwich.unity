@@ -631,6 +631,50 @@ MonoBehaviour:
   _interactionRange: 1
   _xOffset: 0
   _isException: 0
+--- !u!1 &437644130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 437644131}
+  - component: {fileID: 437644132}
+  m_Layer: 0
+  m_Name: ActionQueue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &437644131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437644130}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1372070982}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &437644132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437644130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1cc3b54d831854397382c91f04629a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &513790855
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,11 +979,11 @@ RectTransform:
   m_Father: {fileID: 1449682901277017403}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -395, y: -400}
-  m_SizeDelta: {x: 1080, y: 256}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 200}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &769401045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,7 +1235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -917.5248}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 706.597, y: 162.4753}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &981557496
@@ -1726,9 +1770,33 @@ MonoBehaviour:
   _onMinigameComplete:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 437644132}
+        m_TargetAssemblyTypeName: ActionQueue, Assembly-CSharp
+        m_MethodName: InterruptCurrentAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 769401045}
+        m_TargetAssemblyTypeName: NotificationDock, Assembly-CSharp
+        m_MethodName: AddNotificationToQueue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3240005142106099535, guid: 0e673b23ce7ac1a4893e970730bf8f08, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1241099342}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: SetActiveScene
+        m_MethodName: QueueSetActiveScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1784,6 +1852,7 @@ Transform:
   - {fileID: 2040259534}
   - {fileID: 1241099339}
   - {fileID: 2111884977}
+  - {fileID: 437644131}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2291,9 +2360,45 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 769401045}
+        m_TargetAssemblyTypeName: NotificationDock, Assembly-CSharp
+        m_MethodName: AddNotificationToQueue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3240005142106099535, guid: 86f79412b8eae87468a7b5aa6ce4cc73, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _onSceneDeactivation:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 437644132}
+        m_TargetAssemblyTypeName: ActionQueue, Assembly-CSharp
+        m_MethodName: InterruptCurrentAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 769401045}
+        m_TargetAssemblyTypeName: NotificationDock, Assembly-CSharp
+        m_MethodName: ClearAllNotifications
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1449682901277017351}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
