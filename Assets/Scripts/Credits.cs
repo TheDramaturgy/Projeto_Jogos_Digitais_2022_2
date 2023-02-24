@@ -18,7 +18,7 @@ public class Credits : MonoBehaviour {
 	public void EnableCredits() {
 		foreach (var image in _imageComponents) {
 			image.gameObject.SetActive(true);
-			DOTween.Kill(image);
+			//DOTween.Kill(image);
 			image.DOFade(1.0f, _animationSpeed);
 		}
 
@@ -28,7 +28,7 @@ public class Credits : MonoBehaviour {
 	private IEnumerator ActivateTexts() {
 		foreach (var text in _textComponents) {
 			text.gameObject.SetActive(true);
-			DOTween.Kill(text);
+			//DOTween.Kill(text);
 			var tween = text.DOFade(1.0f, _animationSpeed);
 			while (!tween.IsComplete()) yield return null;
 		}
@@ -38,12 +38,12 @@ public class Credits : MonoBehaviour {
 
 	private void DisableCredits() {
 		foreach (var text in _textComponents) {
-			DOTween.Kill(text);
+			//DOTween.Kill(text);
 			text.DOFade(0.0f, _animationSpeed);
 		}
 
 		foreach (var image in _imageComponents) {
-			DOTween.Kill(image);
+			//DOTween.Kill(image);
 			image.DOFade(0.0f, _animationSpeed).OnComplete(() => { image.gameObject.SetActive(false); });
 		}
 	}
