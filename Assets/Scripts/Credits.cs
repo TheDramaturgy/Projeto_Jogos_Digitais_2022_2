@@ -9,7 +9,6 @@ public class Credits : MonoBehaviour {
 	[SerializeField] private List<Image> _imageComponents = new();
 	[SerializeField] private List<TMP_Text> _textComponents = new();
 	[SerializeField] private GameObject _btnSair;
-	private bool _isActive = false;
 	private float _animationSpeed = 1.0f;
 
 	private void Start() {
