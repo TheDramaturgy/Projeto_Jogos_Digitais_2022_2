@@ -28,8 +28,9 @@ public class Credits : MonoBehaviour {
 	private IEnumerator ActivateTexts() {
 		foreach (var text in _textComponents) {
 			text.gameObject.SetActive(true);
+			Debug.Log(text.text);
 			//DOTween.Kill(text);
-			var tween = text.DOFade(1.0f, _animationSpeed);
+			text.DOFade(1.0f, _animationSpeed);
 			yield return new WaitForSeconds(_animationSpeed/2);
 		}
 
