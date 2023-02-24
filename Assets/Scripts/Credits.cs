@@ -30,7 +30,7 @@ public class Credits : MonoBehaviour {
 			text.gameObject.SetActive(true);
 			//DOTween.Kill(text);
 			var tween = text.DOFade(1.0f, _animationSpeed);
-			while (!tween.IsComplete()) yield return null;
+			yield return new WaitForSeconds(_animationSpeed/2);
 		}
 
 		_btnSair.SetActive(true);
