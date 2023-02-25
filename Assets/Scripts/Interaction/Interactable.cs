@@ -41,4 +41,8 @@ public class Interactable : MonoBehaviour {
 	public void OnInteractableReach() {
 		_onInteractionEvent.Invoke();
 	}
+
+	public void AddInteraction(UnityAction action) => _onInteractionEvent.AddListener(action);
+	public void SetPlayer(PlayerController player) => _character = player;
+
 }

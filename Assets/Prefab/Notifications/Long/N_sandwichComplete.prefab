@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3221e9c69763cc54eac774a83d6682b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activationDelay: 1
+  _activationDelay: 0.01
   _timeUntilExit: -1
   _speakText: {fileID: 3240005142835851303}
   _commentary: {fileID: 11400000, guid: 628bcf10b6c3f7844922fcfd5d27860a, type: 2}
