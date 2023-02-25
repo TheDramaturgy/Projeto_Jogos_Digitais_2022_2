@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,6 +21,7 @@ public class ActionQueue : MonoBehaviour {
 		_actionQueue.Enqueue(action);
 		if (interruption != null) _interruptionQueue.Enqueue(interruption);
 		else _interruptionQueue.Enqueue(EmptyInterruption);
+
 		CheckQueueExecution();
 	}
 
@@ -34,10 +36,23 @@ public class ActionQueue : MonoBehaviour {
 		}
 	}
 
+	public void ClearAllActions() {
+		StartCoroutine(InterruptActions());
+	}
+
+	private IEnumerator InterruptActions() {
+		while (_actionQueue.Count > 0 || _currentAction != null) {
+			InterruptCurrentAction();
+			yield return new WaitForSeconds(Time.deltaTime * 2);
+		}
+	}
+
 	private void CheckQueueExecution() {
 		if (_isActing) {
 			return;
 		} else if (_actionQueue.Count <= 0) {
+			_currentAction = null;
+			_currentInterruption = null;
 			return;
 		}
 

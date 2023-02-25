@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class NotificationDock : MonoBehaviour {
@@ -42,13 +41,13 @@ public class NotificationDock : MonoBehaviour {
 
 	public void InterruptShowNotification() {
 		if (_currentActionQueueNotification != null) {
+			Debug.Log("Deleting Notification");
 			DeleteNotification(_currentActionQueueNotification);
 		}
 	}
 
 	public void TriggerShowNotification() {
 		GameObject prefab = null;
-		Debug.Log("Triggering Show Notification");
 		if (_notificationsNotInstantiated.Count > 0) prefab = _notificationsNotInstantiated.Dequeue();
 	
 		if (prefab != null) {
