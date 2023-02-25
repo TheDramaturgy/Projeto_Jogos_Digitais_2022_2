@@ -41,7 +41,6 @@ public class NotificationDock : MonoBehaviour {
 
 	public void InterruptShowNotification() {
 		if (_currentActionQueueNotification != null) {
-			Debug.Log("Deleting Notification");
 			DeleteNotification(_currentActionQueueNotification);
 		}
 	}

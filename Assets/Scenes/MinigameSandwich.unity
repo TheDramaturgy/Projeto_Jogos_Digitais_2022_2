@@ -1770,6 +1770,18 @@ MonoBehaviour:
   _onMinigameComplete:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 11400000, guid: eb476f629f5551e48ba498af480b7311, type: 2}
+        m_TargetAssemblyTypeName: BoolVariable, Assembly-CSharp
+        m_MethodName: set_Value
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 957899393}
         m_TargetAssemblyTypeName: ActionQueueReference, Assembly-CSharp
         m_MethodName: ClearAllActions

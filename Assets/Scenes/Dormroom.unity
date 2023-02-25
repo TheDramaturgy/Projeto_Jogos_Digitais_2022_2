@@ -18676,7 +18676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7836f7fb89caf42a60877a7b784454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _completeMinigames: {fileID: 11400000, guid: 306a3a4ae2658e8478059211eb12d431, type: 2}
+  _mgSandwichComplete: {fileID: 11400000, guid: eb476f629f5551e48ba498af480b7311, type: 2}
   _onSandwichComplete:
     m_PersistentCalls:
       m_Calls:
@@ -18702,6 +18702,37 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _mgRecipeComplete: {fileID: 11400000, guid: d3cdf85c3d1f9524291ca5b4038d7eb3, type: 2}
+  _onRecipeComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onRecipeIncomplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

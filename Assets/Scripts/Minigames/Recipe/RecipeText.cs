@@ -10,6 +10,7 @@ public class RecipeText : MonoBehaviour {
 	private int _actualParentIndex;
 	private Rigidbody2D _rigidbody;
 	private Collider2D _collider;
+	private bool _isLocked;
 	[SerializeField] private bool _isAssigned;
 	[SerializeField] private bool _isBeingDragged;
 
@@ -23,9 +24,12 @@ public class RecipeText : MonoBehaviour {
 		_unassigned = transform.parent;
 		_actualParentIndex = -1;
 		_isAssigned = false;
+		_isLocked = false;
 	}
 
 	private void OnMouseDown() {
+		if (_isLocked) return;
+
 		transform.SetParent(transform.parent.parent);
 		transform.SetAsLastSibling();
 		transform.rotation = Quaternion.identity;
@@ -35,6 +39,8 @@ public class RecipeText : MonoBehaviour {
 	}
 
 	private void OnMouseDrag() {
+		if (_isLocked) return;
+
 		float zPos = Math.Abs(Camera.main.transform.position.z) - Math.Abs(transform.position.z);
 		var mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, zPos);
 		var worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -44,6 +50,10 @@ public class RecipeText : MonoBehaviour {
 
 
 	private void OnMouseUp() {
+		if (_isLocked) return;
+
+		var recipeSlot = _actualParent.gameObject.GetComponent<RecipeSlot>();
+
 		transform.SetParent(_actualParent);
 		if (_isAssigned) {
 			_rigidbody.velocity = Vector3.zero;
@@ -55,6 +65,10 @@ public class RecipeText : MonoBehaviour {
 			_rigidbody.bodyType = RigidbodyType2D.Dynamic;
 		}
 		_isBeingDragged = false;
+
+		if (recipeSlot != null) {
+			recipeSlot.ChildRecipeTextDragEnded();
+		}
 	}
 
 
@@ -79,6 +93,8 @@ public class RecipeText : MonoBehaviour {
 		if (_isAssigned) return Vector2.Distance(transform.position, _actualParent.position);
 		return float.PositiveInfinity;
 	}
+
+	public void Lock() => _isLocked = true;
 
 	public int GetParentIndex() => _actualParentIndex;
 

@@ -27,6 +27,9 @@ public class RecipeSlot : MonoBehaviour {
 		if (recipeText.GetParentIndex() == _idx) recipeText.Unassign();
 	}
 
+	public void ChildRecipeTextDragEnded() {
+		_validator.CheckRecipeTextOrder();
+	}
 
 	private void SetRecipeText(int textIdx) {
 		_textId = textIdx;

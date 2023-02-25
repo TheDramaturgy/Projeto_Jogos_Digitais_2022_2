@@ -37,10 +37,12 @@ public class ActionQueue : MonoBehaviour {
 	}
 
 	public void ClearAllActions() {
-		StartCoroutine(InterruptActions());
+		while (_actionQueue.Count > 0 || _currentAction != null) {
+			InterruptCurrentAction();
+		}
 	}
 
-	private IEnumerator InterruptActions() {
+	private IEnumerator InterruptActionsAsync() {
 		while (_actionQueue.Count > 0 || _currentAction != null) {
 			InterruptCurrentAction();
 			yield return new WaitForSeconds(Time.deltaTime * 2);

@@ -3,9 +3,15 @@ using UnityEngine.Events;
 
 public class MinigameManager : MonoBehaviour {
 
-	[SerializeField] private RuntimeSet<string> _completeMinigames;
+	[Header("Sandwich")]
+	[SerializeField] private BoolVariable _mgSandwichComplete;
 	[SerializeField] private UnityEvent _onSandwichComplete;
 	[SerializeField] private UnityEvent _onSandwichIncomplete;
+
+	[Header("Recipe")]
+	[SerializeField] private BoolVariable _mgRecipeComplete;
+	[SerializeField] private UnityEvent _onRecipeComplete;
+	[SerializeField] private UnityEvent _onRecipeIncomplete;
 
 	public static MinigameManager Instance { get; private set; }
 
@@ -15,10 +21,16 @@ public class MinigameManager : MonoBehaviour {
 	}
 
 	public void InvokeAllMinigamesCheck() {
-		if (_completeMinigames.Items.Contains("Sandwich")) {
+		if (_mgSandwichComplete.Value) {
 			_onSandwichComplete.Invoke();
 		} else {
 			_onSandwichIncomplete.Invoke();
+		}
+
+		if (_mgRecipeComplete.Value) {
+			_onRecipeComplete.Invoke();
+		} else {
+			_onRecipeIncomplete.Invoke();
 		}
 	}
 

@@ -2241,6 +2241,15 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _isRecipeMinigameComplete: {fileID: 11400000, guid: d3cdf85c3d1f9524291ca5b4038d7eb3, type: 2}
+  _recipeTexts:
+  - {fileID: 1065316562}
+  - {fileID: 532458796}
+  - {fileID: 204625118}
+  - {fileID: 1693686910}
+  - {fileID: 1717681559}
+  - {fileID: 1733617125}
+  - {fileID: 863643457}
+  - {fileID: 568578717}
 --- !u!1 &1106803978
 GameObject:
   m_ObjectHideFlags: 0

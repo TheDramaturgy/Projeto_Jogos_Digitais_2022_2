@@ -158,7 +158,6 @@ MonoBehaviour:
   - Dormroom
   - MinigameSandwich
   - MinigameRecipe
-  - Credits
   _boolVariables:
   - {fileID: 11400000, guid: eb476f629f5551e48ba498af480b7311, type: 2}
   - {fileID: 11400000, guid: ceaa93719c0cbfc4aa74f8c260102cd1, type: 2}
@@ -168,7 +167,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a7312381031c5a4dbe08a1c9b7496e3, type: 2}
   - {fileID: 11400000, guid: 9a09dd786e10dee4b97383a1b4fc7439, type: 2}
   - {fileID: 11400000, guid: 578cee893dc5cf947b05a9ed48897532, type: 2}
-  _shouldResetGame: {fileID: 11400000, guid: a0b063c6ee41d284e96cc0984a3eb282, type: 2}
 --- !u!4 &761768858
 Transform:
   m_ObjectHideFlags: 0
