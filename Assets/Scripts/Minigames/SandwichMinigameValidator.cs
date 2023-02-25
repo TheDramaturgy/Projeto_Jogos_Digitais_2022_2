@@ -6,6 +6,7 @@ public class SandwichMinigameValidator : MonoBehaviour {
 	[SerializeField] private UnityEvent _onMinigameComplete;
 	[SerializeField] private RuntimeSet<string> _completeMinigames;
 	[SerializeField] private InventorySet _sandwichInventory;
+	[SerializeField] private InventoryController _mgInventory;
 
 	// ------ Methods ------
 
@@ -18,7 +19,7 @@ public class SandwichMinigameValidator : MonoBehaviour {
 		if (!_sandwichInventory.isOccupied(4) || _sandwichInventory.GetItemFromSlot(4).GetComponent<InventoryItem>().GetId() != 4) return;
 		if (!_sandwichInventory.isOccupied(5) || _sandwichInventory.GetItemFromSlot(5).GetComponent<InventoryItem>().GetId() != 0) return;
 
-		Debug.Log("COMPLETE!");
+		_mgInventory.LockAllInventorySlots();
 		_completeMinigames.Add("Sandwich");
 		_onMinigameComplete.Invoke();
 	}	

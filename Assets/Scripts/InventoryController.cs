@@ -89,6 +89,12 @@ public class InventoryController : MonoBehaviour {
 		_inventoryChangeEvent.Invoke();
 	}
 
+	public void LockAllInventorySlots() {
+		foreach (var slot in _slots) {
+			slot.GetComponent<InventorySlot>().Lock();
+		}
+	}
+
 	public void RemoveItem(GameObject item) {
 		_inventorySet.RemoveItem(item);
 	}

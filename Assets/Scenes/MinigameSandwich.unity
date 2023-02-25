@@ -1820,6 +1820,7 @@ MonoBehaviour:
         m_CallState: 2
   _completeMinigames: {fileID: 11400000, guid: 306a3a4ae2658e8478059211eb12d431, type: 2}
   _sandwichInventory: {fileID: 11400000, guid: 3993d52cf0831c64dbcad2bd01313a77, type: 2}
+  _mgInventory: {fileID: 1449682900531864571}
 --- !u!114 &1241099342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2713,7 +2714,6 @@ GameObject:
   - component: {fileID: 1449682900531864517}
   - component: {fileID: 1449682900531864516}
   - component: {fileID: 1449682900531864571}
-  - component: {fileID: 1449682900531864568}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -2747,34 +2747,6 @@ RectTransform:
   m_AnchoredPosition: {x: -84, y: 0}
   m_SizeDelta: {x: 148, y: 838}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1449682900531864568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449682900531864518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7f4061690321ba458305e273d09c25f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: a7723aa4ad0031f45b4c15a32247d3d7, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1449682900531864571}
-        m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-        m_MethodName: AddItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!222 &1449682900531864570
 CanvasRenderer:
   m_ObjectHideFlags: 0
