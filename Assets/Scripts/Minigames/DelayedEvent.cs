@@ -12,16 +12,16 @@ public class DelayedEvent : MonoBehaviour {
 	private Coroutine _delayedAction;
 
 	public void TriggerDelayedEvent() {
-		if (_conditions.Count > 0) {
-			foreach (var condition in _conditions) {
-				if (!condition.Value) {
-					_onCoditionNotMet.Invoke();
-					return;
-				}
+		foreach (var condition in _conditions) {
+			if (!condition.Value) {
+				_onCoditionNotMet.Invoke();
+				return;
 			}
 		}
-		Debug.Log("Disparing Delayed Action");
-		_delayedAction = StartCoroutine(StartDelayedEvent());
+
+		if (gameObject.activeSelf) {
+			_delayedAction = StartCoroutine(StartDelayedEvent());
+		}
 	}
 
 	private IEnumerator StartDelayedEvent() {

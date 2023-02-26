@@ -123,6 +123,83 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 762e46b2fa51efa4e9a4bfc18e41c6e8, type: 2}
+--- !u!1 &242835484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 242835486}
+  - component: {fileID: 242835485}
+  m_Layer: 0
+  m_Name: Actor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &242835485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242835484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ab723311b08fb40a1d30b4e92f6ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onDelayReach:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 769401045}
+        m_TargetAssemblyTypeName: NotificationDock, Assembly-CSharp
+        m_MethodName: AddNotificationToQueue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3240005142106099535, guid: 86f79412b8eae87468a7b5aa6ce4cc73, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onCoditionNotMet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 769401045}
+        m_TargetAssemblyTypeName: NotificationDock, Assembly-CSharp
+        m_MethodName: AddNotificationToQueue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3240005142106099535, guid: 3ffd96be977006a4fa394cf59a341e16, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _conditions:
+  - {fileID: 11400000, guid: 6ba1c2f094c0a1446980ef9f40a5dae2, type: 2}
+  _delaySeconds: 0.001
+--- !u!4 &242835486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242835484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1372070982}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &347247774
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &347247775
 Transform:
   m_ObjectHideFlags: 0
@@ -225,6 +302,7 @@ MonoBehaviour:
   _itemIdentifier: 3
   _pickupQuantity: 1
   ItemPrefab: {fileID: 6503925072122785059, guid: 23cbf25453ae67a4bb28ddf6b7e6c435, type: 3}
+  IsPickedUp: 0
 --- !u!61 &347247778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -330,6 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 404411914}
   - component: {fileID: 404411915}
+  - component: {fileID: 404411916}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -410,6 +489,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &404411916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404411913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2869d15addc73fd41853bb8507ba8012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isOnionCollected: {fileID: 11400000, guid: e7af48926f2d8114cb38d374f9422534, type: 2}
+  _isCheeseCollected: {fileID: 11400000, guid: 62acb76464f9f324b847809b6aa1707b, type: 2}
+  _isParsleyCollected: {fileID: 11400000, guid: 0a7312381031c5a4dbe08a1c9b7496e3, type: 2}
+  _onion: {fileID: 2115564584}
+  _cheese: {fileID: 404939470}
+  _parsley: {fileID: 347247774}
 --- !u!1 &404939470
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &404939471
 Transform:
   m_ObjectHideFlags: 0
@@ -512,6 +609,7 @@ MonoBehaviour:
   _itemIdentifier: 4
   _pickupQuantity: 1
   ItemPrefab: {fileID: 6503925072122785059, guid: b05a59cb1bfd02d499d73cfc1dd0dff5, type: 3}
+  IsPickedUp: 0
 --- !u!60 &404939474
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1093,6 +1191,7 @@ MonoBehaviour:
   _itemIdentifier: 1
   _pickupQuantity: 1
   ItemPrefab: {fileID: 6503925072122785059, guid: 06119d6827309514cbc9b79fd7d4284d, type: 3}
+  IsPickedUp: 0
 --- !u!61 &839768952
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1863,6 +1962,7 @@ Transform:
   m_Children:
   - {fileID: 1449682901277017403}
   - {fileID: 2040259534}
+  - {fileID: 242835486}
   - {fileID: 1241099339}
   - {fileID: 2111884977}
   - {fileID: 957899392}
@@ -1904,6 +2004,7 @@ MonoBehaviour:
   _itemIdentifier: 0
   _pickupQuantity: 2
   ItemPrefab: {fileID: 6503925072122785059, guid: 72f9c0e08deba914a92010df45fa1373, type: 3}
+  IsPickedUp: 0
 --- !u!61 &1376188689
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2373,13 +2474,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 769401045}
-        m_TargetAssemblyTypeName: NotificationDock, Assembly-CSharp
-        m_MethodName: AddNotificationToQueue
-        m_Mode: 2
+      - m_Target: {fileID: 404411916}
+        m_TargetAssemblyTypeName: SandwichMinigameTable, Assembly-CSharp
+        m_MethodName: CheckItemCollection
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 3240005142106099535, guid: 86f79412b8eae87468a7b5aa6ce4cc73, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 242835485}
+        m_TargetAssemblyTypeName: DelayedEvent, Assembly-CSharp
+        m_MethodName: TriggerDelayedEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2388,6 +2501,18 @@ MonoBehaviour:
   _onSceneDeactivation:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 242835485}
+        m_TargetAssemblyTypeName: DelayedEvent, Assembly-CSharp
+        m_MethodName: CancelDelayedEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 957899393}
         m_TargetAssemblyTypeName: ActionQueueReference, Assembly-CSharp
         m_MethodName: ClearAllActions
@@ -2456,7 +2581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2115564585
 Transform:
   m_ObjectHideFlags: 0
@@ -2539,6 +2664,7 @@ MonoBehaviour:
   _itemIdentifier: 2
   _pickupQuantity: 1
   ItemPrefab: {fileID: 6503925072122785059, guid: d0eedc049496b9c4f8da4139b37b6c1e, type: 3}
+  IsPickedUp: 0
 --- !u!61 &2115564588
 BoxCollider2D:
   m_ObjectHideFlags: 0

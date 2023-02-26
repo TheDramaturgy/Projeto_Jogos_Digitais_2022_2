@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class Commenter : MonoBehaviour {
 	[SerializeField] private TMP_Text _speakText;
 	[SerializeField] private PlayerController _character;
 
 	private IEnumerator _lastCommentCoroutine;
+	private Queue<Commentary> _commentaries = new();
 	private Commentary _currentCommentary;
 	private Commentary.Dialog _currentDialog;
 	private int _nextCommentIndex = 0;
@@ -27,30 +29,33 @@ public class Commenter : MonoBehaviour {
 
 
 	public void CommentAndEnableControl(Commentary commentary) {
-		_currentCommentary = commentary;
-		PlayerActionQueue.Instance.MustEnableControl();
-		PlayerActionQueue.Instance.AddAction(TriggerComment);
+		_commentaries.Enqueue(commentary);
+		_mustEnableControl = true;
+		ActionQueue.Instance.AddAction(TriggerComment, InterruptDialog);
 	}
 
 	public void CommentAndDisableControl(Commentary commentary) {
-		_currentCommentary = commentary;
-		PlayerActionQueue.Instance.MustDisableControl();
-		PlayerActionQueue.Instance.AddAction(TriggerComment);
+		_commentaries.Enqueue(commentary);
+		_mustEnableControl = false;
+		ActionQueue.Instance.AddAction(TriggerComment, InterruptDialog);
 	}
 
 	public void Comment(Commentary commentary) {
-		_currentCommentary = commentary;
-		PlayerActionQueue.Instance.AddAction(TriggerComment);
+		_commentaries.Enqueue(commentary);
+		ActionQueue.Instance.AddAction(TriggerComment, InterruptDialog);
 	}
 
 	public void TriggerComment() {
 		if (_isCommenting) {
 			StopCoroutine(_lastCommentCoroutine);
 			ClearDialog();
+		} else {
+			_currentCommentary = _commentaries.Dequeue();
 		}
 
 		_isCommenting = true;
-
+		GameController.Instance.DisableInteraction();
+		GameController.Instance.DisableCharacterMovement();
 		_nextCommentIndex = 0;
 		NextDialog();
 	}
@@ -68,16 +73,27 @@ public class Commenter : MonoBehaviour {
 		StartCoroutine(_lastCommentCoroutine);
 	}
 
+	public void InterruptDialog() {
+		if (_lastCommentCoroutine != null) StopCoroutine(_lastCommentCoroutine);
+		ClearDialog();
+		EndComment();
+	}
+
 	public void ClearDialog() {
 		_speakText.text = "";
 	}
 
 	private void EndComment() {
-		if (_character != null) {
-			if (_mustEnableControl) _character.SetControlableDelayed(true);
+		GameController.Instance.EnableInteractionDelayed();
+		if (_mustEnableControl) GameController.Instance.EnableCharacterMovementDelayed();
+		else {
+			GameController.Instance.DisableCharacterMovement();
+			_mustEnableControl = true;
 		}
+
 		_isCommenting = false;
-		PlayerActionQueue.Instance.NextAction();
+		_currentCommentary = null;
+		ActionQueue.Instance.NextAction();
 	}
 
 	private IEnumerator WriteDialogOverTime() {

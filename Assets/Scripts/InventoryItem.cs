@@ -50,8 +50,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
 		if (hit.collider != null) {
 			var itemIteractable = hit.transform.GetComponent<ItemInteractable>();
+			var multipleItemInteractable = hit.transform.GetComponent<MultipleItemInteractable>();
 			if (itemIteractable != null) {
 				itemIteractable.OnDrop(this.gameObject);
+			}
+			if (multipleItemInteractable != null) {
+				multipleItemInteractable.OnDrop(this.gameObject);
 			}
 		}
 		

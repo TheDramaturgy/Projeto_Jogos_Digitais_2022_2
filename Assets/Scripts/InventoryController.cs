@@ -51,6 +51,7 @@ public class InventoryController : MonoBehaviour {
 
 			// Disable picked up item GameObject
 			clickedGameObject.Value.SetActive(false);
+			clickedPickup.IsPickedUp = true;
 			_inventoryChangeEvent.Invoke();
 
 			// Check if it is the first pickup item

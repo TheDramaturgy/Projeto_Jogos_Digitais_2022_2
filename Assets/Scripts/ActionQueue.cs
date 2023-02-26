@@ -6,8 +6,10 @@ using UnityEngine.Events;
 public class ActionQueue : MonoBehaviour {
 	private Queue<UnityAction> _actionQueue = new();
 	private Queue<UnityAction> _interruptionQueue = new();
+
 	private UnityAction _currentAction;
 	private UnityAction _currentInterruption;
+
 	private bool _isActing = false;
 
 	public static ActionQueue Instance { get; private set; }
@@ -62,6 +64,7 @@ public class ActionQueue : MonoBehaviour {
 
 		_currentAction = _actionQueue.Dequeue();
 		_currentInterruption = _interruptionQueue.Dequeue();
+
 		_currentAction.Invoke();
 	}
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,20 +10,28 @@ public class gameObjectPresenter : MonoBehaviour {
 	void Update() {
 		if (_isPresenting) {
 			if (Input.anyKeyDown && _isPresenting && !EventSystem.current.IsPointerOverGameObject()) {
-				_objectPresented.SetActive(false);
-				_isPresenting = false;
-				PlayerActionQueue.Instance.NextAction();
+				InterruptShowGameObject();
 			}
 		}
 	}
 
 	public void ShowGameObject(GameObject go) {
 		_objectPresented = go;
-		PlayerActionQueue.Instance.AddAction(TriggerShowGameObject);
+		ActionQueue.Instance.AddAction(TriggerShowGameObject, InterruptShowGameObject);
 	}
 
 	public void TriggerShowGameObject() {
+		GameController.Instance.DisableInteraction();
+		GameController.Instance.DisableCharacterMovement();
 		_objectPresented.SetActive(true);
 		_isPresenting = true;
+	}
+
+	public void InterruptShowGameObject() {
+		GameController.Instance.EnableInteractionDelayed();
+		GameController.Instance.EnableCharacterMovementDelayed();
+		_objectPresented.SetActive(false);
+		_isPresenting = false;
+		ActionQueue.Instance.NextAction();
 	}
 }

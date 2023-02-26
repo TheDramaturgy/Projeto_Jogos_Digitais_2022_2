@@ -6,6 +6,7 @@ public class PickupItem : MonoBehaviour {
 	[SerializeField] private uint _itemIdentifier;
 	[SerializeField] private uint _pickupQuantity;
 	public Image ItemPrefab;
+	public bool IsPickedUp;
 
 
 	// ------ Methods ------
