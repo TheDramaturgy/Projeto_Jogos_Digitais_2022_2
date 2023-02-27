@@ -84,8 +84,8 @@ public class Commenter : MonoBehaviour {
 	}
 
 	private void EndComment() {
-		GameController.Instance.EnableInteractionDelayed();
-		if (_mustEnableControl) GameController.Instance.EnableCharacterMovementDelayed();
+		GameController.Instance.EnableInteraction();
+		if (_mustEnableControl) GameController.Instance.EnableCharacterMovement();
 		else {
 			GameController.Instance.DisableCharacterMovement();
 			_mustEnableControl = true;

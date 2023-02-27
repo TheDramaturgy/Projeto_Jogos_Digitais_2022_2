@@ -39,6 +39,7 @@ public class Interactable : MonoBehaviour {
 	}
 
 	public void OnInteractableReach() {
+		CursorManager.Instance.ActivePlainCursor();
 		_onInteractionEvent.Invoke();
 	}
 

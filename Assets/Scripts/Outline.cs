@@ -59,6 +59,7 @@ public class Outline : MonoBehaviour {
 			_isMouseOver = true;
 			SetTransparency(_mouseOverTransparency);
 			_renderer.material.SetColor("_Color", _mouseOverColor);
+			CursorManager.Instance.ActiveInteractionCursor();
 		}
 	}
 
@@ -68,6 +69,7 @@ public class Outline : MonoBehaviour {
 			_isIncreasing = true;
 			SetTransparency(_effectiveMinTransparency);
 			_renderer.material.SetColor("_Color", _color);
+			CursorManager.Instance.ActivePlainCursor();
 		}
 	}
 
