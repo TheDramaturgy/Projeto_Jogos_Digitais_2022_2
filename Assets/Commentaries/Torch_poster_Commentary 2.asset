@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Torch_poster_Commentary 2
   m_EditorClassIdentifier: 
   Commentaries:
-  - ...mas isso deixaria o escopo do jogo muito grande.
+  - "Comprei esse p\xF4ster num evento de anime quando ainda nem tinha acabado Naruto."
+  - "Acho que ele j\xE1 est\xE1 bem desgastadinho."
   Durations:
+  - -1
   - -1
   _isContinuous: 1
   _isCyclic: 0
