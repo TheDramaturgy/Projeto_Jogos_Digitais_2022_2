@@ -127,7 +127,7 @@ TextureImporter:
         width: 50
         height: 61
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,7 +148,7 @@ TextureImporter:
         width: 50
         height: 61
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,6 +156,48 @@ TextureImporter:
       bones: []
       spriteID: 57b27eb535d19d4479cfadf4e2833907
       internalID: -903438617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poster_rock_all_sprites_2
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 94
+        width: 28
+        height: 34
+      alignment: 9
+      pivot: {x: 0.6593056, y: 0.5531025}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9110669142ed61b4cac4e99ced8da08a
+      internalID: -1055514349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poster_rock_all_sprites_3
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 18
+        width: 50
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89f93d45fff46be41ab29e0af78f5585
+      internalID: -977758195
       vertices: []
       indices: 
       edges: []
@@ -172,7 +214,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       poster_rock_all_sprites_0: 1112657774
+      poster_rock_all_sprites_2: -1055514349
       poster_rock_all_sprites_1: -903438617
+      poster_rock_all_sprites_3: -977758195
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
