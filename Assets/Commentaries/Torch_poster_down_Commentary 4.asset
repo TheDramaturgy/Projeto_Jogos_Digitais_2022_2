@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Torch_poster_down_Commentary 4
   m_EditorClassIdentifier: 
   Commentaries:
-  - "Eu podia s\xF3 abandonar esse meu gosto adolescente por essas bandas n\xE9?"
+  - "Eu poderia s\xF3 abandonar esse meu gosto adolescente por essas bandas n\xE9?"
   - ...
-  - "Nah, n\xE3o vou abandonar essa parte de mim agora."
+  - Nah, eu sou adolescente. Eu posso me dar essa liberdade.
   Durations:
   - -1
   - -1
