@@ -1633,7 +1633,7 @@ MonoBehaviour:
   _conditions:
   - {fileID: 11400000, guid: ceaa93719c0cbfc4aa74f8c260102cd1, type: 2}
   - {fileID: 11400000, guid: 578cee893dc5cf947b05a9ed48897532, type: 2}
-  _delaySeconds: 5
+  _delaySeconds: 2
 --- !u!1 &162261289
 GameObject:
   m_ObjectHideFlags: 0
