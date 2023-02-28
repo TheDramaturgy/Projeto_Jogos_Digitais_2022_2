@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Commentaries:
   - "Eu podia s\xF3 abandonar esse meu gosto adolescente por essas bandas n\xE9?"
+  - ...
+  - "Nah, n\xE3o vou abandonar essa parte de mim agora."
   Durations:
+  - -1
+  - -1
   - -1
   _isContinuous: 1
   _isCyclic: 0

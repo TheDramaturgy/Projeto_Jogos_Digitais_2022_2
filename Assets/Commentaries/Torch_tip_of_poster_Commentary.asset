@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Torch_tip_of_poster_Commentary
   m_EditorClassIdentifier: 
   Commentaries:
-  - "Olha s\xF3, parece que eu estava escondendo alguma coisa de mim mesmo aqui atr\xE1s."
+  - "Olha s\xF3, parece que eu estava escondendo alguma coisa de mim aqui atr\xE1s."
   Durations:
   - -1
   _isContinuous: 1

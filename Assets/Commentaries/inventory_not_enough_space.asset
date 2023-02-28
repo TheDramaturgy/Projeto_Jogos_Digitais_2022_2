@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: inventory_not_enough_space
   m_EditorClassIdentifier: 
   Commentaries:
-  - "Estou sobrecarregado! Preciso organizar melhor meu invent\xE1rio."
+  - "Estou carregando muita coisa! Devo dar um destino ao que est\xE1 nas minhas
+    m\xE3os antes de pegar mais algo."
   Durations:
   - -1
   _isContinuous: 1

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DicaParaCompletar
   m_EditorClassIdentifier: 
   Commentaries:
-  - "A receita est\xE1 uma bagun\xE7a! N\xE3o consigo seguir os passos se eles n\xE3o
-    estiverem na ordem correta."
+  - "A receita est\xE1 uma bagun\xE7a! Preciso deixar os ingredientes na ordem correta
+    pra montar esse sandu\xEDche."
   Durations:
   - -1
   _isContinuous: 1
