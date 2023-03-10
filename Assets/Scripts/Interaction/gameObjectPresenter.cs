@@ -17,19 +17,15 @@ public class gameObjectPresenter : MonoBehaviour {
 
 	public void ShowGameObject(GameObject go) {
 		_objectPresented = go;
-		ActionQueue.Instance.AddAction(TriggerShowGameObject, InterruptShowGameObject);
+		ActionQueue.Instance.AddAction(TriggerShowGameObject, InterruptShowGameObject, isBlockingAction: true);
 	}
 
 	public void TriggerShowGameObject() {
-		GameController.Instance.DisableInteraction();
-		GameController.Instance.DisableCharacterMovement();
 		_objectPresented.SetActive(true);
 		_isPresenting = true;
 	}
 
 	public void InterruptShowGameObject() {
-		GameController.Instance.EnableInteractionDelayed();
-		GameController.Instance.EnableCharacterMovementDelayed();
 		_objectPresented.SetActive(false);
 		_isPresenting = false;
 		ActionQueue.Instance.NextAction();

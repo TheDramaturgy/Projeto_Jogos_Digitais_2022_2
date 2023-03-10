@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (hit2d.collider != null && hit2d.transform.gameObject.tag == "Interactable") {
 				_movementDetectionAllowed = false;
-			} else if (_canMove && !EventSystem.current.IsPointerOverGameObject()) {
+			} else if (_canMove && GameController.Instance.CanMove() && !EventSystem.current.IsPointerOverGameObject()) {
 				_movementDetectionAllowed = true;
 			} else {
 				_movementDetectionAllowed = false;
@@ -131,6 +131,7 @@ public class PlayerController : MonoBehaviour {
 
 	public void MoveCharacterToClickedItem(float range, float xOffset, UnityAction callback, bool isException = false) {
 		if (!_canMove && !isException) { return; }
+		if (!GameController.Instance.CanMove() && !isException) { return; }
 
 		var targetPosRight = new Vector3(_clickedItem.Value.transform.position.x + xOffset, transform.position.y, _clickedItem.Value.transform.position.z);
 		var targetPosLeft = new Vector3(_clickedItem.Value.transform.position.x - xOffset, transform.position.y, _clickedItem.Value.transform.position.z);
@@ -173,7 +174,7 @@ public class PlayerController : MonoBehaviour {
 		_canMove = false;
 	}
 
-	public bool CanMove() { return _canMove; }
+	public bool CanMove() => _canMove;
 
 	#endregion Event Responses
 

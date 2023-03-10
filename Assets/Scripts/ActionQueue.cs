@@ -4,13 +4,23 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class ActionQueue : MonoBehaviour {
-	private Queue<UnityAction> _actionQueue = new();
-	private Queue<UnityAction> _interruptionQueue = new();
+	private struct GameAction {
+		public UnityAction action;
+		public UnityAction interruption;
+		public bool isBlockingAction;
 
-	private UnityAction _currentAction;
-	private UnityAction _currentInterruption;
+		public GameAction(UnityAction action, UnityAction interruption, bool isBlockingAction) {
+			this.action = action;
+			this.interruption = interruption;
+			this.isBlockingAction = isBlockingAction;
+		}
+	}
+
+	private Queue<GameAction> _gameActionQueue = new();
+	private GameAction _currentGameAction;
 
 	private bool _isActing = false;
+	private bool _isBlockedByAction = false;
 
 	public static ActionQueue Instance { get; private set; }
 
@@ -19,33 +29,33 @@ public class ActionQueue : MonoBehaviour {
 		else Instance = this;
 	}
 
-	public void AddAction(UnityAction action, UnityAction interruption = null) {
-		_actionQueue.Enqueue(action);
-		if (interruption != null) _interruptionQueue.Enqueue(interruption);
-		else _interruptionQueue.Enqueue(EmptyInterruption);
+	public void AddAction(UnityAction action, UnityAction interruption = null, bool isBlockingAction = false) {
+		if (interruption != null) _gameActionQueue.Enqueue(new GameAction(action, interruption, isBlockingAction));
+		else _gameActionQueue.Enqueue(new GameAction(action, EmptyInterruption, isBlockingAction));
 
 		CheckQueueExecution();
 	}
 
 	public void NextAction() {
 		_isActing = false;
+		_isBlockedByAction = false;
 		CheckQueueExecution();
 	}
 
 	public void InterruptCurrentAction() {
-		if (_currentInterruption != null) {
-			_currentInterruption.Invoke();
+		if (_currentGameAction.interruption != null) {
+			_currentGameAction.interruption.Invoke();
 		}
 	}
 
 	public void ClearAllActions() {
-		while (_actionQueue.Count > 0 || _currentAction != null) {
+		while (_gameActionQueue.Count > 0 || !_currentGameAction.Equals(default(GameAction))) {
 			InterruptCurrentAction();
 		}
 	}
 
 	private IEnumerator InterruptActionsAsync() {
-		while (_actionQueue.Count > 0 || _currentAction != null) {
+		while (_gameActionQueue.Count > 0 || !_currentGameAction.Equals(default(GameAction))) {
 			InterruptCurrentAction();
 			yield return new WaitForSeconds(Time.deltaTime * 2);
 		}
@@ -54,21 +64,18 @@ public class ActionQueue : MonoBehaviour {
 	private void CheckQueueExecution() {
 		if (_isActing) {
 			return;
-		} else if (_actionQueue.Count <= 0) {
-			_currentAction = null;
-			_currentInterruption = null;
+		} else if (_gameActionQueue.Count <= 0) {
+			_currentGameAction = default(GameAction);
 			return;
 		}
 
+		_currentGameAction = _gameActionQueue.Dequeue();
 		_isActing = true;
-
-		_currentAction = _actionQueue.Dequeue();
-		_currentInterruption = _interruptionQueue.Dequeue();
-
-		_currentAction.Invoke();
+		_isBlockedByAction = _currentGameAction.isBlockingAction; 
+		_currentGameAction.action.Invoke();
 	}
 
-	private void EmptyInterruption() {
-		return;
-	}
+	private void EmptyInterruption() { return; }
+
+	public bool IsBlockedByAction() => _isBlockedByAction;
 }

@@ -19,8 +19,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	public void OnBeginDrag(PointerEventData eventData) {
 		if (_actualParent.GetComponent<InventorySlot>().IsLocked()) return;
 
-		_previousControlState = GameController.Instance.CanMove();
-		GameController.Instance.DisableCharacterMovement();
+		GameController.Instance.SetMovingInventoryItem(true);
 
 		transform.SetParent(transform.parent.parent.parent);
 		transform.SetAsLastSibling();
@@ -36,8 +35,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	public void OnEndDrag(PointerEventData eventData) {
 		if (_actualParent.GetComponent<InventorySlot>().IsLocked()) return;
 
-		if (_previousControlState) GameController.Instance.EnableCharacterMovement();
-		else GameController.Instance.DisableCharacterMovement();
+		GameController.Instance.SetMovingInventoryItem(false);
 
 		UpdatePosition();
 		CheckDropInteraction();

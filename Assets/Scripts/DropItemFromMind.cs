@@ -16,7 +16,7 @@ public class DropItemFromMind : MonoBehaviour {
 
 	public void DropItem(GameObject prefab) {
 		_itemsToDrop.Enqueue(prefab);
-		ActionQueue.Instance.AddAction(TriggerDropItem);
+		ActionQueue.Instance.AddAction(TriggerDropItem, isBlockingAction: true);
 	}
 
 	public void TriggerDropItem() {
@@ -27,12 +27,7 @@ public class DropItemFromMind : MonoBehaviour {
 		interactable.AddInteraction(_inventory.PickupClickedItem);
 		interactable.SetPlayer(transform.GetComponent<PlayerController>());
 
-		GameController.Instance.DisableInteraction();
-		GameController.Instance.DisableCharacterMovement();
-
 		item.transform.DOJump(_endPosition.position, 1.5f, 1, 2.0f).OnComplete(() => {
-			GameController.Instance.EnableInteraction();
-			GameController.Instance.EnableCharacterMovement();
 			ActionQueue.Instance.NextAction();
 		});
 
